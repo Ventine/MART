@@ -1,5 +1,5 @@
 import { TfiViewGrid, TfiCheckBox, TfiCalendar, TfiSaveAlt, TfiPowerOff, TfiMenu, TfiClose, TfiBell , TfiAngleDown, TfiSearch,
-    TfiFlickrAlt, TfiSignal, TfiTime} from "react-icons/tfi";
+    TfiFlickrAlt, TfiSignal, TfiTime, TfiBasketball, TfiBook} from "react-icons/tfi";
 import React from 'react'
 import {useState} from "react";
 function App() {
@@ -58,10 +58,10 @@ function App() {
                 </div>
             </div>
         </div>
-        <button onClick={handleSidebar} className="block lg:hidden absolute bottom-4 right-4 bg-lime-600 p-2 text-white
-        rounded-full text-2xl">{sidebar ? <TfiClose /> : <TfiMenu />}</button>
+        <button onClick={handleSidebar} className="block lg:hidden fixed bottom-4 right-4 bg-lime-600 p-2 text-white
+        rounded-full text-2xl z-40">{sidebar ? <TfiClose /> : <TfiMenu />}</button>
         <div className="col-span-5">
-            <header className="flex flex-col md:flex-row gap-4 items-center justify-between p-5 w-full">
+            <header className="flex flex-col md:flex-row gap-4 items-center justify-between p-5 md:pl-8 lg:pl-10 w-full">
                 <form className="w-full md:w-[40%] lg:w-[35%] order-1 md:order-none">
                     <div className="relative ">
                         <TfiSearch className="absolute left-2 top-3" />
@@ -85,11 +85,11 @@ function App() {
                     </ul>
                 </nav>
             </header>
-            <div className="p-9 bg-lime-50">
+            <div className="p-6 md:p-8 lg:p-12 bg-lime-50">
                 <div className="mb-6">
-                    <h1 className="text-2xl font-semibold">Area de trabajo</h1>
+                    <h1 className="text-2xl font-semibold text-lime-600">Area de trabajo</h1>
                 </div>
-                <div className="grid grid-cols-4 gap-3 items-center mb-5 ">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-center mb-5 ">
                     <form className="col-span-2">
                         <div className="relative ">
                             <TfiSearch className="absolute left-2 top-3 text-lime-600" />
@@ -112,7 +112,7 @@ function App() {
                         </div>
                     </form>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center flex-wrap gap-3">
                     <span className="bg-white flex items-center gap-2 py-3 px-5 pl-3 pr-4 rounded-full">
                         <button className="bg-lime-100 p-1 rounded-full text-lime-600 text-xs"><TfiClose /></button>
                         <span className="text-gray-600">Horario</span>
@@ -125,7 +125,46 @@ function App() {
                         <button className="bg-lime-100 p-1 rounded-full text-lime-600 text-xs"><TfiClose /></button>
                         <span className="text-gray-600">Ejercicio</span>
                     </span>
-                     <button className="text-lime-500 ml-4">Borrar busquedas</button>
+                     <button className="bg-white text-lime-600 ml-4">Borrar busquedas</button>
+                </div>
+                <div className="flex items-center justify-between mt-10 mb-5">
+                    <p className="text-gray-500">Tienes <span className="text-lime-500 font-semibold">25</span> tareas pendientes.</p>
+                    <p className="flex items-center gap-2 ">Ordenado por <span className="text-lime-500 font-semibold hover:cursor-pointer">
+                        Fecha</span> <TfiAngleDown /> </p>
+                </div>
+                <div className="bg-white rounded-2xl p-7 flex flex-col md:flex-row gap-5 w-full shadow-lg border-2 border-transparent
+                 hover:border-lime-600">
+                    <div className="w-full md:w-[15%] flex items-center justify-between">
+                        <TfiBasketball className="text-6xl bg-lime-100 text-lime-500 p-2 rounded-md"/>
+                    </div>
+                    <div className="w:full md:w-[65%]">
+                        <h1 className="text-xl flex items-center gap-5 mb-2">Ejercicio
+                            <span className="text-sm py-1 px-2 bg-red-100 text-red-600 font-bold">Alta</span>
+                            <span className="text-sm py-1 px-2 bg-purple-100 text-purple-600 font-bold">60 minutos</span>
+                        </h1>
+                        <p className="text-gray-500">Jugar basketball</p>
+                    </div>
+                    <div className="w:full md:w-[20%]">
+                        <h3 className="text-xl text-gray-500 mb-2">21/02/2023</h3>
+                        <p className="text-gray-500">Martes</p>
+                    </div>
+                </div>
+                <div className="bg-white rounded-2xl p-7 flex flex-col md:flex-row gap-5 w-full shadow-lg border-2 border-transparent
+                 hover:border-lime-600 mt-5">
+                    <div className="w-full md:w-[15%] flex items-center justify-between">
+                        <TfiBook className="text-6xl bg-lime-100 text-lime-500 p-2 rounded-md"/>
+                    </div>
+                    <div className="w:full md:w-[65%]">
+                        <h1 className="text-xl flex items-center gap-5 mb-2">Tarea
+                            <span className="text-sm py-1 px-2 bg-blue-100 text-blue-600 font-bold">Media</span>
+                            <span className="text-sm py-1 px-2 bg-purple-100 text-purple-600 font-bold">30 minutos</span>
+                        </h1>
+                        <p className="text-gray-500">Jugar basketball</p>
+                    </div>
+                    <div className="w:full md:w-[20%]">
+                        <h3 className="text-xl text-gray-500 mb-2">22/02/2023</h3>
+                        <p className="text-gray-500">Miercoles</p>
+                    </div>
                 </div>
             </div>
         </div>
