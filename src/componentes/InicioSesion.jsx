@@ -40,11 +40,11 @@ export default function InicioSesion() {
                                     <form>
                                         <div className="relative mt-2">
                                             <TfiCrown className="absolute left-2 top-3" />
-                                            <input type="text" className="bg-lime-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full"  placeholder="Ingresar usuario" />
+                                            <input type="text" className="bg-blue-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full"  placeholder="Ingresar usuario" />
                                         </div>
                                         <div className="relative mt-2">
                                             <TfiKey className="absolute left-2 top-3" />
-                                            <input type="password" className="bg-lime-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full"  placeholder="Ingresar contraseña" />
+                                            <input type="password" className="bg-blue-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full"  placeholder="Ingresar contraseña" />
                                         </div>
                                     </form>
                                 </div>

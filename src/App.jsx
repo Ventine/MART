@@ -13,7 +13,7 @@ function App() {
   return (
      <div className="min-h-screen grid grid-cols-1 lg:grid-cols-6">      {/*Pagina principal*/}
         {/*Menu derecho*/}
-        <div className={`fixed lg:static top-0 z-50 bg-white ${sidebar ? "-left-0" : "-left-full"} w-[50%] lg:w-full md:w-[45%] 
+        <div className={` fixed lg:static w-[64%] top-0 z-50 bg-white  ${sidebar ? "-left-0" : "-left-full"} lg:w-full md:w-[45%] 
         w-full h-full col-span-1 p-6 border-r transition-all`}>
             <div className="text-center p-6">
                 <h1 className="font-bold tracking-[5px] text-lime-800">MART</h1>
@@ -93,7 +93,7 @@ function App() {
             {/*Dashboard*/}
             <div className="p-6 md:p-8 lg:p-12 bg-lime-50">
                 <div className="mb-6">
-                    <h1 className="text-2xl font-semibold text-lime-600">Area de trabajo</h1>
+                    <h1 className="text-2xl font-semibold text-blue-600">Area de trabajo</h1>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-center mb-5 ">
                     <form className="col-span-2">

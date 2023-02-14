@@ -38,23 +38,23 @@ export default function Registrarse() {
                                 <div className="relative p-6 flex-auto">
                                     <div className="relative mt-3">
                                         <TfiFaceSmile className="absolute left-2 top-3" />
-                                        <input type="text" className="bg-lime-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Ingresar nombre" />
+                                        <input type="text" className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Ingresar nombre" />
                                     </div>
                                     <div className="relative mt-3">
                                         <TfiTablet className="absolute left-2 top-3" />
-                                        <input type="number" className="bg-lime-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Ingresar telefono" />
+                                        <input type="number" className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Ingresar telefono" />
                                     </div>
                                     <div className="relative mt-3">
                                         <TfiLayoutCtaBtnRight className="absolute left-2 top-3" />
-                                        <input type="email" className="bg-lime-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Ingresar correo" />
+                                        <input type="email" className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Ingresar correo" />
                                     </div>
                                     <div className="relative mt-3">
                                         <TfiKey className="absolute left-2 top-3" />
-                                        <input type="password" className="bg-lime-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Ingresar contraseña" />
+                                        <input type="password" className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Ingresar contraseña" />
                                     </div>
                                     <div className="relative mt-3">
                                         <TfiLock className="absolute left-2 top-3" />
-                                        <input type="password" className="bg-lime-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Repetir contraseña" />
+                                        <input type="password" className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"  placeholder="Repetir contraseña" />
                                     </div>
                                 </div>
                                 {/*footer*/}
