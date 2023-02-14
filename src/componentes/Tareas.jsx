@@ -1,14 +1,7 @@
 import {TfiAngleDown, TfiBasketball, TfiBook, TfiClose, TfiSearch, TfiSignal, TfiTime} from "react-icons/tfi";
 import {useState} from "react";
-function Tareas(){
+function Tareas({product, setProduct, item, setItem}){
     const [formErrors, setFormErrors] = useState({});
-    const [item, setItem] = useState([]);
-    const [product, setProduct] = useState({
-        nombreTarea: "",
-        prioridadTarea: "",
-        tiempoTarea: "",
-        descricpionTarea: "",
-    });
 
     const handleChange = (e) => {
         setProduct({ ...product, [e.target.name]: e.target.value });
@@ -89,7 +82,7 @@ function Tareas(){
                                 <option>Media</option>
                                 <option>Baja</option>
                             </select>
-                            <p className="text-red-900">{formErrors.name}</p>
+                            <p className="text-red-900">{formErrors.prioridadTarea}</p>
                             <br />
                             <input
                                 name="tiempoTarea"
@@ -99,7 +92,7 @@ function Tareas(){
                                 className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
                                 placeholder="Tiempo de tarea"
                             />
-                            <p className="text-red-900">{formErrors.qty}</p>
+                            <p className="text-red-900">{formErrors.tiempoTarea}</p>
                             <br />
                             <textarea
                                 name="descricpionTarea"
@@ -118,11 +111,11 @@ function Tareas(){
                 </div>
                 <div className="mr-auto mt-2 p-1 w-full">
                     <div className="grid lg:grid-cols-3 gap-2 md:grid-cols-2 grid-cols-1 ">
-                        {item.map((res, index) => {
+                        {item.map((obj, index) => {
                             return (
                                 <div className="bg-white p-5 rounded-xl border border-blue-500" key={index}>
                                     <button
-                                        onClick={() => handleDelete(res)}
+                                        onClick={() => handleDelete(obj)}
                                         className="float-right bg-red-500 px-2 text-white rounded-full"
                                     >
                                         x
@@ -130,19 +123,19 @@ function Tareas(){
                                     <div className="mt-6 text-center p-1 md:p-0">
                                         <div className="flex space-x-4 items-center justify-between">
                                             <h1 className="text-lime-600">Nombre tarea:</h1>
-                                            <p className="text-xl">{res.nombreTarea}</p>
+                                            <p className="text-xl">{obj.nombreTarea}</p>
                                         </div>
                                         <div className="flex space-x-4 items-center justify-between">
                                             <h1 className="text-lime-600">Prioridad:</h1>
-                                            <p className="text-xl">{res.prioridadTarea}</p>
+                                            <p className="text-xl">{obj.prioridadTarea}</p>
                                         </div>
                                         <div className="flex space-x-4 items-center justify-between">
                                             <h1 className="text-lime-600">Tiempo de tarea:</h1>
-                                            <p className="text-xl">{res.tiempoTarea}</p>
+                                            <p className="text-xl">{obj.tiempoTarea}</p>
                                         </div>
                                         <div className="flex space-x-4 items-center justify-between">
                                             <h1 className="text-lime-600">Descripción tarea:</h1>
-                                            <p className="text-xl">{res.descricpionTarea}</p>
+                                            <p className="text-xl">{obj.descricpionTarea}</p>
                                         </div>
                                     </div>
                                 </div>
