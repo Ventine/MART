@@ -13,7 +13,7 @@ function NavBar() {
     return (
         <div>
             {/*Menu derecho*/}
-            <div className={`w-[62%] fixed lg:static top-0 z-50 bg-white  ${sidebar ? "-left-0" : "-left-full"} lg:w-full md:w-[45%] 
+            <div className={`w-[62%] fixed lg:static top-0 z-50 bg-white  ${sidebar ? "-left-0" : "-left-full"} lg:w-[98%] md:w-[42%] 
         w-full h-full col-span-1 p-6 border-r transition-all`}>
                 <div className="flex flex-col justify-between h-[480px]">
                     <div className="text-center p-6">
@@ -53,7 +53,6 @@ function NavBar() {
                     </nav>
                     <div className="flex flex-col gap-3 mt-10">
                         <div className="bg-lime-50 p-3 flex flex-col gap-3 rounded-3xl">
-                            <h3 className="text-xl text-center">Hazte Premium</h3>
                             <p className="text-gray-500 text-center">Accede a muchas funcionalidades haciendote
                                 premium.</p>
                             <Premium/>

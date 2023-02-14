@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import Tareas from "./componentes/Tareas.jsx";
 
 function App() {
+
     return (
         <div className="min-h-screen grid grid-cols-1 lg:grid-cols-6">      {/*Pagina principal*/}
             <NavBar/>

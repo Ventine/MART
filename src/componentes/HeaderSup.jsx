@@ -2,7 +2,7 @@ import {TfiBell, TfiFlickrAlt, TfiSearch} from "react-icons/tfi";
 
 function HeaderSup(){
     return(
-    <header className="flex flex-col md:flex-row gap-4 items-center justify-between p-5 md:pl-8 lg:pl-10 w-full">         {/*Menu superior*/}
+    <header className="flex flex-col md:flex-row gap-4 md:-mt-44 lg:mt-2 items-center justify-between p-5 md:pl-8 lg:pl-10 w-full">         {/*Menu superior*/}
         <form className="w-full md:w-[40%] lg:w-[35%] order-1 md:order-none">
             <div className="relative ">
                 <TfiSearch className="absolute left-2 top-3" />
