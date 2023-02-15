@@ -52,14 +52,14 @@ function Tareas({product, setProduct, item, setItem}){
     };
 
     return (
-        <div className="mt-1 bg-lime-50 p-2">
-            <div className="mb-1">
-                <h1 className="p-8 text-3xl font-semibold text-blue-600">Agregar tareas</h1>
+        <div className="mt-1 bg-purple-50 p-2">
+            <div className="mb-1 bg-white rounded w-1/2 flex items-center justify-center border border-purple-600 ">
+                <h1 className="p-3 text-3xl font-semibold text-blue-600 italic">Agregar tareas</h1>
             </div>
             <div className="flex lg:flex-row md:flex-row flex-col ">
                 <div className="p-3 lg:w-1/3 w-full ">
                     <div className="bg-white lg:p-8 p-5 rounded-lg border border-lime-600">
-                        <h1 className="text-2xl text-center text-purple-600 mb-5">Agregar tarea</h1>
+                        <h1 className="text-2xl text-center text-purple-600 mb-5 italic">Agregar tarea</h1>
                         <form onSubmit={handleSubmit}>
                             <input
                                 name="nombreTarea"
@@ -86,7 +86,7 @@ function Tareas({product, setProduct, item, setItem}){
                             <br />
                             <input
                                 name="tiempoTarea"
-                                type="number" step={15} min={0}
+                                type="number" step={15} min={15}
                                 value={product.tiempoTarea}
                                 onChange={handleChange}
                                 className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
@@ -103,7 +103,7 @@ function Tareas({product, setProduct, item, setItem}){
                             />
                             <p className="text-red-900">{formErrors.descricpionTarea}</p>
                             <br />
-                            <button className="px-10 py-2 lg:ml-12 text-md text-white bg-emerald-600 rounded hover:bg-lime-400">
+                            <button className="px-10 py-2 lg:ml-12 text-md text-white bg-lime-600 rounded hover:bg-purple-400">
                                 Agregar
                             </button>
                         </form>
@@ -122,19 +122,19 @@ function Tareas({product, setProduct, item, setItem}){
                                     </button>
                                     <div className="mt-6 text-center p-1 md:p-0">
                                         <div className="flex space-x-4 items-center justify-between">
-                                            <h1 className="text-lime-600">Nombre tarea:</h1>
+                                            <h1 className="text-purple-600">Nombre tarea:</h1>
                                             <p className="text-xl">{obj.nombreTarea}</p>
                                         </div>
                                         <div className="flex space-x-4 items-center justify-between">
-                                            <h1 className="text-lime-600">Prioridad:</h1>
+                                            <h1 className="text-purple-600">Prioridad:</h1>
                                             <p className="text-xl">{obj.prioridadTarea}</p>
                                         </div>
                                         <div className="flex space-x-4 items-center justify-between">
-                                            <h1 className="text-lime-600">Tiempo de tarea:</h1>
+                                            <h1 className="text-purple-600">Tiempo de tarea:</h1>
                                             <p className="text-xl">{obj.tiempoTarea}</p>
                                         </div>
                                         <div className="flex space-x-4 items-center justify-between">
-                                            <h1 className="text-lime-600">Descripción tarea:</h1>
+                                            <h1 className="text-purple-600">Descripción tarea:</h1>
                                             <p className="text-xl">{obj.descricpionTarea}</p>
                                         </div>
                                     </div>
