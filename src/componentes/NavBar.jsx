@@ -13,19 +13,19 @@ function NavBar() {
     return (
         <div>
             {/*Menu derecho*/}
-            <div className={`w-[60%] fixed lg:static top-0 z-50 bg-white  ${sidebar ? "-left-0" : "-left-[90%]"} lg:w-[98%] md:w-[42%] 
-        w-full h-full col-span-1 p-6 border-r transition-all`}>
+            <div className={`w-[240px] fixed lg:static top-0 z-50 bg-white  ${sidebar ? "-left-0" : "-left-[90%]"} lg:w-full md:w-[45%] 
+        w-full h-full col-span-1 p-5 border-r border-purple-200 transition-all`}>
                 <div className="flex flex-col justify-between h-[480px]">
                     <div className="text-center p-6">
                         <h1 className="font-bold tracking-[5px] text-purple-800">MART</h1>
                     </div>
-                    <nav>
+                    <nav className="mt-8">
                         <ul>
                             <li>
                                 <Link to="/" className="flex items-center gap-1.5 hover:bg-purple-600 p-3 text-gray-400 hover:text-white rounded-lg
                         transition-colors font-semibold">
                                     <TfiViewGrid/>
-                                    Tablero
+                                    Home
                                 </Link>
                             </li>
                             <li>
@@ -42,13 +42,6 @@ function NavBar() {
                                     Horario
                                 </Link>
                             </li>
-                            <li>
-                                <Link to="/historial" className="flex items-center gap-2 hover:bg-purple-600 p-4 text-gray-400 hover:text-white rounded-lg
-                        transition-colors font-semibold">
-                                    <TfiSaveAlt/>
-                                    Historial
-                                </Link>
-                            </li>
                         </ul>
                     </nav>
                     <div className="flex flex-col gap-3 mt-10">
@@ -63,7 +56,7 @@ function NavBar() {
                     <Outlet/>
                 </div>
             </div>
-            <button onClick={handleSidebar} className="block lg:hidden fixed bottom-4 right-4 bg-lime-600 p-2 text-white
+            <button onClick={handleSidebar} className="block lg:hidden fixed bottom-4 right-4 bg-purple-500 hover:bg-purple-600 p-2 text-white
         rounded-full text-2xl z-40">{sidebar ? <TfiClose/> : <TfiMenu/>}</button>
         </div>
     )

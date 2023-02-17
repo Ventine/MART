@@ -6,7 +6,7 @@ export default function InicioSesion() {
     return (
         <>
             <button
-                className="bg-blue-500 text-white active:bg-lime-600 font-bold uppercase px-6 py-3 mt-10 rounded-lg shadow hover:shadow-lg
+                className="bg-blue-500 hover:bg-blue-600 text-white active:bg-lime-600 font-bold uppercase px-6 py-3 mt-10 rounded-lg shadow hover:shadow-lg
                 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all"
                 type="button"
                 onClick={() => setShowModal(true)}
@@ -58,7 +58,7 @@ export default function InicioSesion() {
                                         Cancelar
                                     </button>
                                     <button
-                                        className="bg-lime-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        className="bg-lime-500 hover:bg-lime-600 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
                                         onClick={() => setShowModal(false)}
                                     >
