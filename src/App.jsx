@@ -5,6 +5,7 @@ import NavBar from "./componentes/NavBar.jsx";
 import {Route, Routes} from "react-router-dom";
 import Tareas from "./componentes/Tareas.jsx";
 import {useState} from "react";
+import Perfil from "./componentes/Perfil.jsx";
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<AreaDeTrabajo/>}/>
                     <Route path="tareas" element={<Tareas product={product} item={item} setItem={setItem} setProduct={setProduct} />}/>
-                    console
+                    <Route path="horario" element={<Perfil item={item} />}/>
                 </Routes>
             </div>
         </div>

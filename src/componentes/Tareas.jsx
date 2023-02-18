@@ -53,12 +53,12 @@ function Tareas({product, setProduct, item, setItem}){
 
     return (
         <div className="mt-1 bg-purple-50 p-2">
-            <div className="mb-1 bg-white rounded w-1/2 flex items-center justify-center border border-purple-600 ">
-                <h1 className="p-3 text-3xl font-semibold text-blue-600 italic">Agregar tareas</h1>
+            <div className="bg-white hover:bg-amber-50 border flex flex-col rounded-lg shadow-lg hover:shadow-xl">
+                <h1 className="p-3 text-3xl font-semibold text-purple-600 italic">Agregar tareas</h1>
             </div>
-            <div className="flex lg:flex-row md:flex-row flex-col ">
-                <div className="p-3 lg:w-1/3 w-full ">
-                    <div className="bg-white lg:p-8 p-5 rounded-lg border border-lime-600">
+            <div className="flex lg:flex-row md:flex-row flex-col">
+                <div className="p-3 lg:w-1/3 w-full" >
+                    <div className="bg-white lg:p-8 p-5 rounded-lg border border-lime-600 hover:bg-lime-50 shadow-lg hover:shadow-xl">
                         <h1 className="text-2xl text-center text-purple-600 mb-5 italic">Agregar tarea</h1>
                         <form onSubmit={handleSubmit}>
                             <input
@@ -113,7 +113,7 @@ function Tareas({product, setProduct, item, setItem}){
                     <div className="grid lg:grid-cols-3 gap-2 md:grid-cols-2 grid-cols-1 ">
                         {item.map((obj, index) => {
                             return (
-                                <div className="bg-white p-5 rounded-xl border border-blue-500" key={index}>
+                                <div className="bg-white p-5 rounded-xl border border-blue-500 hover:bg-blue-50 shadow-lg hover:shadow-xl" key={index}>
                                     <button
                                         onClick={() => handleDelete(obj)}
                                         className="float-right bg-red-500 px-2 text-white rounded-full"
