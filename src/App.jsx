@@ -17,12 +17,12 @@ function App() {
         descricpionTarea: "",
     });
     const [item, setItem] = useState([]);
-    const x = true;
+    const x = false;
     return (
         <div className="min-h-screen grid grid-cols-1 lg:grid-cols-6">      {/*Pagina principal*/}
-            <NavBar/>
+            <NavBar x={x}/>
             <div className="col-span-5">
-                {x ? <div></div>: <HeaderSup/>}
+                 <HeaderSup/>
 
                 <Routes>
                     {x ? <Route path="/" element={<AreaDeTrabajo/>}/>: <Route path="/" element={<Perfil item={item} />}/>}

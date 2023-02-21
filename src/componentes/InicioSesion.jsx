@@ -6,8 +6,9 @@ export default function InicioSesion() {
     return (
         <>
             <button
-                className="bg-blue-500 hover:bg-blue-600 text-white active:bg-lime-600 font-bold uppercase px-6 py-3 mt-10 rounded-lg shadow hover:shadow-lg
-                outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all"
+                className="bg-blue-500 hover:bg-blue-600 text-white active:bg-lime-600 font-bold uppercase px-6 py-3
+                mt-10 rounded-lg shadow hover:shadow-lg
+                outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
                 onClick={() => setShowModal(true)}
             >
@@ -16,7 +17,8 @@ export default function InicioSesion() {
             {showModal ? (
                 <>
                     <div
-                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed
+                        inset-0 z-50 outline-none focus:outline-none"
                     >
                         <div className="relative w-auto my-6 mx-auto max-w-3xl">
                             {/*content*/}
@@ -27,7 +29,8 @@ export default function InicioSesion() {
                                         Iniciar Sesión
                                     </h3>
                                     <button
-                                        className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                                        className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right
+                                        text-3xl leading-none font-semibold outline-none focus:outline-none transition-all duration-150"
                                         onClick={() => setShowModal(false)}
                                     >
                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
@@ -51,14 +54,17 @@ export default function InicioSesion() {
                                 {/*footer*/}
                                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                                     <button
-                                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        className="text-red-500 background-transparent font-bold uppercase px-6
+                                        py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
                                         onClick={() => setShowModal(false)}
                                     >
                                         Cancelar
                                     </button>
                                     <button
-                                        className="bg-lime-500 hover:bg-lime-600 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        className="bg-lime-500 hover:bg-lime-600 text-white active:bg-purple-600 font-bold
+                                        uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none
+                                        mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
                                         onClick={() => setShowModal(false)}
                                     >

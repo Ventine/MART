@@ -5,7 +5,8 @@ export default function Premium() {
     return (
         <>
             <button
-                className="bg-pink-500 hover:bg-pink-600 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                className="bg-pink-500 hover:bg-pink-600 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded
+                shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
                 onClick={() => setShowModal(true)}
             >
@@ -14,7 +15,8 @@ export default function Premium() {
             {showModal ? (
                 <>
                     <div
-                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none
+                        focus:outline-none transition-all duration-15"
                     >
                         <div className="relative w-auto my-6 mx-auto max-w-3xl">
                             {/*content*/}
