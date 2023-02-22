@@ -1,6 +1,9 @@
-import {TfiCrown, TfiControlStop, TfiCheckBox, TfiRulerAlt, TfiFiles} from "react-icons/tfi";
+import {TfiCrown, TfiControlStop, TfiCheckBox, TfiRulerAlt, TfiFiles, TfiViewGrid, TfiCalendar} from "react-icons/tfi";
+import React from "react";
+import {Link} from "react-router-dom";
 
-function AreaDeTrabajo() {
+function AreaDeTrabajo({product, setProduct, item, setItem}) {
+
     return (
         <div className="h-[80vh] flex flex-col sm:flex-row ml-5">
             {/*Dashboard*/}
@@ -17,13 +20,18 @@ function AreaDeTrabajo() {
                         prioridad, ahora espera la magia,
                         tendrás un horario elaborado para poder seguir tu día a día.</p>
                     <div className="flex items-center gap-5 m-auto flex-col sm:flex-row">
-                        <button
-                            className="bg-purple-600 hover:bg-purple-800 text-white py-4 px-6 rounded-xl text-xl">Automatizar
-                        </button>
-                        <button className="flex items-center gap-5 py-4 px-6 rounded-xl text-xl hover:bg-gray-100">
-                            <TfiCrown className="bg-gray-200 text-purple-600 p-3 box-content rounded-full "/> <span
-                            className="text-gray-500">
-                        Premium</span></button>
+                        <Link to="/tareas">
+                            <button
+                                className="bg-purple-600 hover:bg-purple-800 text-white py-4 px-6 rounded-xl text-xl"
+                            >Agregar tareas
+                            </button>
+                        </Link>
+                        <Link to="/horario">
+                            <button className="flex items-center gap-5 py-4 px-6 rounded-xl text-xl hover:bg-gray-100">
+                                <TfiCrown className="bg-gray-200 text-purple-600 p-3 box-content rounded-full "/> <span
+                                className="text-gray-500">
+                            Mi horario</span></button>
+                        </Link>
                     </div>
                 </div>
             </div>

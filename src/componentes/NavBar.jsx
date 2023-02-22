@@ -57,16 +57,15 @@ function NavBar({x}) {
                                 premium.</p>
                             <Premium/>
                         </div>
-                        <img src="/work.svg" alt="work" className="w-[40%] md:w-[72%] lg:w-[88%] m-4"/>
-                        <div className="bg-purple-50 border border-purple-500 rounded-lg p-2">
+                        <img src="/work.svg" alt="work" className="w-[40%] md:w-[72%] lg:w-[88%] m-4 hover:border"/>
+                        <div
+                            className="bg-purple-50 border border-purple-500 hover:bg-lime-50 hover:border-lime-500 rounded-lg p-2">
                             <p className="text-gray-700 ">El único modo de hacer un gran trabajo es amar lo que
                                 haces <br/>
                                 <span className="italic text-black m-5">Steve Jobs</span></p>
                         </div>
                     </div>
                 }
-
-
                 <Outlet/>
             </div>
             <button onClick={handleSidebar} className="block lg:hidden fixed bottom-3 right-5 bg-purple-500 hover:bg-purple-600 p-2 text-white

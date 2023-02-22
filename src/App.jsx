@@ -22,9 +22,8 @@ function App() {
             <NavBar x={x}/>
             <div className="col-span-5">
                 <HeaderSup/>
-
                 <Routes>
-                    {x ? <Route path="/" element={<AreaDeTrabajo/>}/> :
+                    {x ? <Route path="/" element={<AreaDeTrabajo product={product} item={item} setItem={setItem} setProduct={setProduct} />}/> :
                         <Route path="/" element={<Perfil item={item}/>}/>}
 
                     <Route path="tareas"
