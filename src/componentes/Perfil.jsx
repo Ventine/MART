@@ -19,7 +19,8 @@ function Perfil({item}) {
                         />
                     </div>
                     <div
-                        className="bg-purple-700 mx-4 rounded-lg flex items-center gap-2 -mt-8 z-1 shadow-xl py-2 px-6 hidden md:flex">
+                        className="bg-purple-700 mx-4 rounded-lg flex items-center gap-2 -mt-8 z-1 shadow-xl py-2 px-6 hidden md:flex
+                         cursor-pointer">
                         <h3 className="text-white text-lg font-semibold ">Usuario</h3>
                     </div>
                     <div className="px-6 py-4 flex flex-col gap-2">
