@@ -1,10 +1,11 @@
 import {TfiAngleDown, TfiBasketball, TfiBook, TfiClose, TfiSearch, TfiSignal, TfiTime} from "react-icons/tfi";
 import {useState} from "react";
-function Tareas({product, setProduct, item, setItem}){
+
+function Tareas({product, setProduct, item, setItem}) {
     const [formErrors, setFormErrors] = useState({});
 
     const handleChange = (e) => {
-        setProduct({ ...product, [e.target.name]: e.target.value });
+        setProduct({...product, [e.target.name]: e.target.value});
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -57,8 +58,9 @@ function Tareas({product, setProduct, item, setItem}){
                 <h1 className="p-3 text-3xl font-semibold text-purple-600 italic">Agregar tareas</h1>
             </div>
             <div className="flex lg:flex-row md:flex-row flex-col">
-                <div className="p-3 lg:w-1/3 w-full" >
-                    <div className="bg-white lg:p-8 p-5 rounded-lg border border-lime-600 hover:bg-lime-50 shadow-lg hover:shadow-xl">
+                <div className="p-3 lg:w-1/3 w-full">
+                    <div
+                        className="bg-white lg:p-8 p-5 rounded-lg border border-lime-600 hover:bg-lime-50 shadow-lg hover:shadow-xl">
                         <h1 className="text-2xl text-center text-purple-600 mb-5 italic">Agregar tarea</h1>
                         <form onSubmit={handleSubmit}>
                             <input
@@ -69,7 +71,7 @@ function Tareas({product, setProduct, item, setItem}){
                                 placeholder="Nombre de la tarea"
                             />
                             <p className="text-red-900">{formErrors.nombreTarea}</p>
-                            <br />
+                            <br/>
                             <select
                                 name="prioridadTarea"
                                 value={product.prioridadTarea}
@@ -83,7 +85,7 @@ function Tareas({product, setProduct, item, setItem}){
                                 <option>Baja</option>
                             </select>
                             <p className="text-red-900">{formErrors.prioridadTarea}</p>
-                            <br />
+                            <br/>
                             <input
                                 name="tiempoTarea"
                                 type="number" step={15} min={15}
@@ -93,7 +95,7 @@ function Tareas({product, setProduct, item, setItem}){
                                 placeholder="Tiempo de tarea"
                             />
                             <p className="text-red-900">{formErrors.tiempoTarea}</p>
-                            <br />
+                            <br/>
                             <textarea
                                 name="descricpionTarea"
                                 value={product.descricpionTarea}
@@ -102,8 +104,9 @@ function Tareas({product, setProduct, item, setItem}){
                                 placeholder="Descripción tarea"
                             />
                             <p className="text-red-900">{formErrors.descricpionTarea}</p>
-                            <br />
-                            <button className="px-10 py-2 lg:ml-12 text-md text-white bg-lime-600 rounded hover:bg-purple-400">
+                            <br/>
+                            <button
+                                className="px-10 py-2 lg:ml-12 text-md text-white bg-lime-600 rounded hover:bg-purple-400">
                                 Agregar
                             </button>
                         </form>
@@ -113,7 +116,9 @@ function Tareas({product, setProduct, item, setItem}){
                     <div className="grid lg:grid-cols-3 gap-2 md:grid-cols-2 grid-cols-1 ">
                         {item.map((obj, index) => {
                             return (
-                                <div className="bg-white p-5 rounded-xl border border-blue-500 hover:bg-blue-50 shadow-lg hover:shadow-xl" key={index}>
+                                <div
+                                    className="bg-white p-5 rounded-xl border border-blue-500 hover:bg-blue-50 shadow-lg hover:shadow-xl"
+                                    key={index}>
                                     <button
                                         onClick={() => handleDelete(obj)}
                                         className="float-right bg-red-500 px-2 text-white rounded-full"
