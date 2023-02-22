@@ -51,15 +51,14 @@ function NavBar({x}) {
                         <Registrarse/>
                     </div>
                     :
-                    <div className="flex flex-col gap-2 mt-8 items-center">
+                    <div className="flex flex-col gap-2 mt-4 items-center">
                         <div className="bg-purple-50 p-3 flex flex-col gap-2 rounded-3xl">
                             <p className="text-gray-500 text-center">Accede a muchas funcionalidades haciendote
                                 premium.</p>
                             <Premium/>
                         </div>
-                        <img src="/work.svg" alt="work" className="w-[40%] md:w-[72%] lg:w-[88%] m-4 hover:border"/>
                         <div
-                            className="bg-purple-50 border border-purple-500 hover:bg-lime-50 hover:border-lime-500 rounded-lg p-2">
+                            className="bg-purple-50 border border-purple-500 hover:bg-lime-50 hover:border-lime-500 rounded-lg p-1">
                             <p className="text-gray-700 ">El único modo de hacer un gran trabajo es amar lo que
                                 haces <br/>
                                 <span className="italic text-black m-5">Steve Jobs</span></p>

@@ -21,7 +21,7 @@ function App() {
         <div className="min-h-screen grid grid-cols-1 lg:grid-cols-6">      {/*Pagina principal*/}
             <NavBar x={x}/>
             <div className="col-span-5">
-                <HeaderSup/>
+                <HeaderSup x={x} item={item} setItem={setItem} />
                 <Routes>
                     {x ? <Route path="/" element={<AreaDeTrabajo product={product} item={item} setItem={setItem} setProduct={setProduct} />}/> :
                         <Route path="/" element={<Perfil item={item}/>}/>}
