@@ -16,7 +16,7 @@ function App() {
         descricpionTarea: "",
     });
     const [item, setItem] = useState([]);
-    const x = false;
+    const x = true;
     return (
         <div className="min-h-screen grid grid-cols-1 lg:grid-cols-6">      {/*Pagina principal*/}
             <NavBar x={x}/>

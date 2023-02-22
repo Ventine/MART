@@ -1,5 +1,5 @@
 import {TfiHandPointRight} from "react-icons/tfi";
-function MenuBell({ item,  setItem, setRedn}) {
+function MenuBell({ item,  setItem}) {
     return(
         <div className="absolute right-0 rounded-lg p-2 w-[210px] sm:w-[330px] h-[400px] max-h-[420px] overflow-y-auto" >
             {item.map((obj, index) => {

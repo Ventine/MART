@@ -32,7 +32,6 @@ function Tareas({product, setProduct, item, setItem}) {
     const handleDelete = (param) => {
         const deleteItem = item.filter((item, index) => item.nombreTarea !== param.nombreTarea);
         setItem([...deleteItem]);
-        console.log(param);
     };
 
     const validate = (values) => {
@@ -144,6 +143,7 @@ function Tareas({product, setProduct, item, setItem}) {
                                         </div>
                                     </div>
                                 </div>
+
                             );
                         })}
                     </div>
