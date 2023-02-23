@@ -1,25 +1,24 @@
 import {TfiAngleDown, TfiBasketball, TfiBook, TfiClose, TfiSearch, TfiSignal, TfiTime} from "react-icons/tfi";
 import {useState} from "react";
 
-function Tareas({product, setProduct, item, setItem}) {
+function Tareas({ task, setTask, item, setItem}) {
     const [formErrors, setFormErrors] = useState({});
-
     const handleChange = (e) => {
-        setProduct({...product, [e.target.name]: e.target.value});
+        setTask({...task, [e.target.name]: e.target.value});
     };
     const handleSubmit = (e) => {
         e.preventDefault();
         if (
-            product.nombreTarea === "" ||
-            product.prioridadTarea === "" ||
-            product.tiempoTarea === "" ||
-            product.descricpionTarea === ""
+            task.nombreTarea === "" ||
+            task.prioridadTarea === "" ||
+            task.tiempoTarea === "" ||
+            task.descricpionTarea === ""
         ) {
-            setFormErrors(validate(product));
+            setFormErrors(validate(task));
         } else {
-            item.push(product);
+            item.push(task);
             setItem([...item]);
-            setProduct({
+            setTask({
                 nombreTarea: "",
                 prioridadTarea: "",
                 tiempoTarea: "",
@@ -50,6 +49,8 @@ function Tareas({product, setProduct, item, setItem}) {
         }
         return errors;
     };
+    let lista = localStorage.getItem("1");
+
 
     return (
         <div className="mt-1 bg-purple-50 p-2">
@@ -64,7 +65,7 @@ function Tareas({product, setProduct, item, setItem}) {
                         <form onSubmit={handleSubmit}>
                             <input
                                 name="nombreTarea"
-                                value={product.nombreTarea}
+                                value={task.nombreTarea}
                                 onChange={handleChange}
                                 className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
                                 placeholder="Nombre de la tarea"
@@ -73,7 +74,7 @@ function Tareas({product, setProduct, item, setItem}) {
                             <br/>
                             <select
                                 name="prioridadTarea"
-                                value={product.prioridadTarea}
+                                value={task.prioridadTarea}
                                 onChange={handleChange}
                                 className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
                                 placeholder="Prioridad"
@@ -88,7 +89,7 @@ function Tareas({product, setProduct, item, setItem}) {
                             <input
                                 name="tiempoTarea"
                                 type="number" step={15} min={15}
-                                value={product.tiempoTarea}
+                                value={task.tiempoTarea}
                                 onChange={handleChange}
                                 className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
                                 placeholder="Tiempo de tarea"
@@ -97,7 +98,7 @@ function Tareas({product, setProduct, item, setItem}) {
                             <br/>
                             <textarea
                                 name="descricpionTarea"
-                                value={product.descricpionTarea}
+                                value={task.descricpionTarea}
                                 onChange={handleChange}
                                 className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
                                 placeholder="Descripción tarea"

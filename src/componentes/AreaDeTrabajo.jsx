@@ -2,7 +2,7 @@ import {TfiCrown, TfiControlStop, TfiCheckBox, TfiRulerAlt, TfiFiles, TfiViewGri
 import React from "react";
 import {Link} from "react-router-dom";
 
-function AreaDeTrabajo({product, setProduct, item, setItem}) {
+function AreaDeTrabajo() {
 
     return (
         <div className="h-[80vh] flex flex-col sm:flex-row ml-5">

@@ -1,8 +1,12 @@
 import React from "react";
 import {TfiCrown, TfiKey} from "react-icons/tfi";
 
-export default function InicioSesion() {
+export default function InicioSesion({setLlave ,setSidebar}) {
     const [showModal, setShowModal] = React.useState(false);
+    const options = () => {
+        setLlave(false)
+        setSidebar(false)
+    }
     return (
         <>
             <button
@@ -70,7 +74,7 @@ export default function InicioSesion() {
                                         uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none
                                         mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
-                                        onClick={() => setShowModal(false)}
+                                        onClick={options}
                                     >
                                         Ingresar
                                     </button>

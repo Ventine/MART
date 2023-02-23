@@ -5,11 +5,17 @@ import InicioSesion from "./InicioSesion.jsx";
 import Registrarse from "./Registrarse.jsx";
 import React, {useState} from "react";
 
-function NavBar({x}) {
+function NavBar({llave, setLlave}) {
     const [sidebar, setSidebar] = useState(false);
     const handleSidebar = () => {
         setSidebar(!sidebar)
     }
+    const options = () => {
+        setLlave(true)
+        setSidebar(!sidebar)
+        window.location.replace('/');
+    }
+
     return (
         <div className={`w-[29%] fixed lg:static bg-white z-10  ${sidebar ? "-left-0" : "-left-full"} lg:w-full md:w-[43%] 
                 w-full h-full col-span-1 p-4 border-r border-purple-200 transition-all`}>
@@ -40,15 +46,15 @@ function NavBar({x}) {
                         </li>
                     </ul>
                 </nav>
-                {x ?
+                {llave ?
                     <div className="flex flex-col gap-2 mt-8">
                         <div className="bg-purple-50 p-3 flex flex-col gap-2 rounded-3xl">
                             <p className="text-gray-500 text-center">Accede a muchas funcionalidades haciendote
                                 premium.</p>
                             <Premium/>
                         </div>
-                        <InicioSesion/>
-                        <Registrarse/>
+                        <InicioSesion setLlave={setLlave} setSidebar={setSidebar} />
+                        <Registrarse />
                     </div>
                     :
                     <div className="flex flex-col gap-2 mt-4 items-center">
@@ -63,6 +69,15 @@ function NavBar({x}) {
                                 haces <br/>
                                 <span className="italic text-black m-5">Steve Jobs</span></p>
                         </div>
+                        <button
+                            className="bg-red-500 hover:bg-red-400 text-white active:bg-red-600 font-bold mt-10
+                                        uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none
+                                        mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="button"
+                            onClick={options}
+                        >
+                            Cerrar Sesión
+                        </button>
                     </div>
                 }
                 <Outlet/>

@@ -9,25 +9,27 @@ import Perfil from "./componentes/Perfil.jsx";
 
 function App() {
 
-    const [product, setProduct] = useState({
+    const [task, setTask] = useState({
         nombreTarea: "",
         prioridadTarea: "",
         tiempoTarea: "",
         descricpionTarea: "",
     });
+
+
     const [item, setItem] = useState([]);
-    const x = true;
+    const [llave, setLlave] = useState(true);
     return (
         <div className="min-h-screen grid grid-cols-1 lg:grid-cols-6">      {/*Pagina principal*/}
-            <NavBar x={x}/>
+            <NavBar llave={llave} setLlave={setLlave} />
             <div className="col-span-5">
-                <HeaderSup x={x} item={item} setItem={setItem} />
+                <HeaderSup llave={llave} item={item} setItem={setItem} />
                 <Routes>
-                    {x ? <Route path="/" element={<AreaDeTrabajo product={product} item={item} setItem={setItem} setProduct={setProduct} />}/> :
+                    {llave ? <Route path="/" element={<AreaDeTrabajo />}/> :
                         <Route path="/" element={<Perfil item={item}/>}/>}
 
                     <Route path="tareas"
-                           element={<Tareas product={product} item={item} setItem={setItem} setProduct={setProduct}/>}/>
+                           element={<Tareas task={task} item={item} setItem={setItem} setTask={setTask}/>}/>
                 </Routes>
             </div>
         </div>

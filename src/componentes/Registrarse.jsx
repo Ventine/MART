@@ -1,5 +1,5 @@
 import React from "react";
-import {TfiCrown, TfiKey, TfiFaceSmile, TfiLock, TfiTablet, TfiLayoutCtaBtnRight} from "react-icons/tfi";
+import {TfiCrown, TfiHummer, TfiFaceSmile, TfiLock, TfiHome, TfiLayoutCtaBtnRight} from "react-icons/tfi";
 
 export default function Registrarse() {
     const [showModal, setShowModal] = React.useState(false);
@@ -46,28 +46,28 @@ export default function Registrarse() {
                                                placeholder="Nombre"/>
                                     </div>
                                     <div className="relative mt-3">
-                                        <TfiTablet className="absolute left-2 top-3"/>
-                                        <input type="number"
-                                               className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"
-                                               placeholder="Telefono"/>
-                                    </div>
-                                    <div className="relative mt-3">
                                         <TfiLayoutCtaBtnRight className="absolute left-2 top-3"/>
-                                        <input type="email"
+                                        <input type="number"
                                                className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"
                                                placeholder="Correo"/>
                                     </div>
                                     <div className="relative mt-3">
-                                        <TfiKey className="absolute left-2 top-3"/>
+                                        <TfiHome className="absolute left-2 top-3"/>
+                                        <input type="email"
+                                               className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"
+                                               placeholder="Ciudad"/>
+                                    </div>
+                                    <div className="relative mt-3">
+                                        <TfiHummer className="absolute left-2 top-3"/>
                                         <input type="password"
                                                className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"
-                                               placeholder="Contraseña"/>
+                                               placeholder="Puesto de trabajo"/>
                                     </div>
                                     <div className="relative mt-3">
                                         <TfiLock className="absolute left-2 top-3"/>
                                         <input type="password"
                                                className="bg-purple-50 py-2 pl-9 pr-6 outline-none rounded-lg w-full required"
-                                               placeholder="Repetir contraseña"/>
+                                               placeholder="Contraseña"/>
                                     </div>
                                 </div>
                                 <div

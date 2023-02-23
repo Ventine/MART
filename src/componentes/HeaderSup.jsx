@@ -2,7 +2,7 @@ import {TfiVector, TfiBell, TfiFlickrAlt, TfiHandPointRight} from "react-icons/t
 import {useState} from "react";
 import MenuBell from "./MenuBell.jsx";
 
-function HeaderSup({x, item,  setItem}) {
+function HeaderSup({llave, item,  setItem}) {
     const [open, setOpen] = useState(false);
     return (
         <header
@@ -13,7 +13,7 @@ function HeaderSup({x, item,  setItem}) {
                     <TfiVector className="font-bold tracking-[5px] text-purple-800 m-1 text-2xl"/>
                     <h1 className="font-bold tracking-[5px] text-purple-800 text-2xl ml-3">MART</h1>
                 </div>
-                {x ?
+                {llave ?
                     <div>
                     </div>
                 :
