@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import Tareas from "./componentes/Tareas.jsx";
 import {useState} from "react";
 import Perfil from "./componentes/Perfil.jsx";
+import Calendar from "./componentes/Calendar.jsx";
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
 
                     <Route path="tareas"
                            element={<Tareas task={task} item={item} setItem={setItem} setTask={setTask}/>}/>
+                    <Route path="horario"
+                           element={<Calendar />}/>
                 </Routes>
             </div>
         </div>
