@@ -8,6 +8,8 @@ const Global = React.createContext({
     setCalendarioPequenomes: (index) => {},
     diaSelected: null,
     setDiaSelected : (dia) => {},
+    showNodal: false,
+    setShowNodal : (dia) => {},
 });
 
 export default Global;

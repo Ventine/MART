@@ -1,7 +1,10 @@
 import dayjs from "dayjs";
 import { es } from "dayjs/locale/es";
+import {useContext} from "react";
+import Global from "./Global.js";
 dayjs.locale("es");
 function Dia({dia, rowIdx}){
+    const {setDiaSelected, setShowNodal} = useContext(Global)
     function getDiaClass() {
         return dia.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ? "bg-purple-600 text-white rounded-full w-6 p-1" : "";
     }
@@ -17,6 +20,12 @@ function Dia({dia, rowIdx}){
                     {dia.format('DD')}
                 </p>
             </header>
+            <div className="flex-1 cursor-pointer" onClick={() => {
+                setDiaSelected(dia); setShowNodal(true)
+            }
+            }>
+                {""}
+            </div>
         </div>
     )
 }
