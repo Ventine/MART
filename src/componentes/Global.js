@@ -9,7 +9,12 @@ const Global = React.createContext({
     diaSelected: null,
     setDiaSelected : (dia) => {},
     showNodal: false,
-    setShowNodal : (dia) => {},
+    setShowNodal : () => {},
+    despachoDeTareas: ({tipo, carga}) => {},
+    guardarTarea: [],
+    eventoSeleccionado: null,
+    setEventoSeleccionado: () => {},
+
 });
 
 export default Global;

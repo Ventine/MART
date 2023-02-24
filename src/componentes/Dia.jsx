@@ -1,10 +1,17 @@
 import dayjs from "dayjs";
 import { es } from "dayjs/locale/es";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import Global from "./Global.js";
 dayjs.locale("es");
 function Dia({dia, rowIdx}){
-    const {setDiaSelected, setShowNodal} = useContext(Global)
+    const [diaEvento, setDiaEvento] = useState([])
+    const {setDiaSelected, setShowNodal, guardarTarea, setEventoSeleccionado} = useContext(Global)
+
+    useEffect(() => {
+        const eventos = guardarTarea.filter(evt => dayjs(evt.dia).format("DD-MM-YY") === dia.format("DD-MM-YY") )
+        setDiaEvento(eventos)
+    }, [guardarTarea, dia])
+
     function getDiaClass() {
         return dia.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ? "bg-purple-600 text-white rounded-full w-6 p-1" : "";
     }
@@ -24,7 +31,13 @@ function Dia({dia, rowIdx}){
                 setDiaSelected(dia); setShowNodal(true)
             }
             }>
-                {""}
+                {diaEvento.map((evt, index) => (
+                    <div key={index}
+                         onClick={()=> setEventoSeleccionado(evt)}
+                        className={`bg-${evt.color}-500 p-1 m-1 text-white text-sm rounded truncate` }>
+                        {evt.titulo}
+                    </div>
+                ))}
             </div>
         </div>
     )
