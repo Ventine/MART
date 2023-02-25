@@ -2,7 +2,7 @@ import BotonCreaciones from "./BotonCreaciones.jsx"
 import CalendarioPequeno from "./CalendarioPequeno.jsx";
 function Sidebar(){
     return(
-        <aside className="p-3 w-52">
+        <aside className="p-3 w-52 w-[14%]">
             <BotonCreaciones />
             <CalendarioPequeno />
         </aside>
