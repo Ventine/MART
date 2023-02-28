@@ -9,8 +9,8 @@ function BotonCreaciones(){
         <button className="border border-blue-500 hover:bg-blue-50 rounded-full flex items-center shadow-md hover:shadow-lg"
                 onClick={()=> setShowNodal(true)}
         >
-            <TfiBrush className="text-purple-600 text-xl mx-2" />
-            <span className="text-blue-600 text-lg">Agregar tarea</span>
+            <TfiBrush className="text-purple-600 text-xl mx-1" />
+            <span className="text-blue-600 text-lg mx-1">Agregar tarea</span>
         </button>
     )
 }

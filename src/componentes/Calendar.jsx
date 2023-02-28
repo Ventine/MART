@@ -23,7 +23,6 @@ function Calendar(){
                     <Sidebar />
                     <Mes mes={currentMes} />
                 </div>
-
             </div>
         </React.Fragment>
     )

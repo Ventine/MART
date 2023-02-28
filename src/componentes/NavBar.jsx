@@ -4,7 +4,6 @@ import Premium from "./Premium.jsx";
 import InicioSesion from "./InicioSesion.jsx";
 import Registrarse from "./Registrarse.jsx";
 import React, {useState} from "react";
-
 function NavBar({llave, setLlave}) {
     const [sidebar, setSidebar] = useState(false);
     const handleSidebar = () => {
@@ -14,8 +13,8 @@ function NavBar({llave, setLlave}) {
         setLlave(true)
         setSidebar(!sidebar)
         window.location.replace('/');
+        localStorage.clear();
     }
-
     return (
         <div className={`w-[29%] fixed lg:static bg-white z-10  ${sidebar ? "-left-0" : "-left-full"} lg:w-full md:w-[43%] 
                 w-full h-full col-span-1 p-4 border-r border-purple-200 transition-all`}>
