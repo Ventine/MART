@@ -19,7 +19,7 @@ function Calendar(){
             {showNodal &&  <TareaModal /> }
             <div className="h-screen flex flex-col">
                 <CalendarHeader />
-                <div className="flex flex-1">
+                <div className="flex flex-col sm:flex-row ">
                     <Sidebar />
                     <Mes mes={currentMes} />
                 </div>
