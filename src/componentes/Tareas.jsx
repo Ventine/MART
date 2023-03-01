@@ -1,155 +1,96 @@
-import {TfiAngleDown, TfiBasketball, TfiBook, TfiClose, TfiSearch, TfiSignal, TfiTime} from "react-icons/tfi";
-import {useState} from "react";
+import {TfiCheckBox, TfiClose, TfiBook, TfiHarddrives, TfiPaintRoller, TfiPaintBucket, TfiLoop, TfiEraser} from "react-icons/tfi";
+import {useContext, useState} from "react";
+import Global from "./Global.js";
+import dayjsRandom from 'dayjs-random'
+import dayjs from "dayjs";
+const colores = [ "blue", "red", "purple", "lime", "pink"];
+dayjs.extend(dayjsRandom)
 
 function Tareas({ task, setTask, item, setItem}) {
-    const [formErrors, setFormErrors] = useState({});
-    const handleChange = (e) => {
-        setTask({...task, [e.target.name]: e.target.value});
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (
-            task.nombreTarea === "" ||
-            task.prioridadTarea === "" ||
-            task.tiempoTarea === "" ||
-            task.descricpionTarea === ""
-        ) {
-            setFormErrors(validate(task));
-        } else {
-            item.push(task);
-            setItem([...item]);
-            setTask({
-                nombreTarea: "",
-                prioridadTarea: "",
-                tiempoTarea: "",
-                descricpionTarea: "",
-            });
-            setFormErrors({});
-        }
-    };
+    const {setShowNodal, diaSelected, despachoDeTareas, eventoSeleccionado} = useContext(Global)
+    const [titulo, setTitulo] = useState(eventoSeleccionado ? eventoSeleccionado.titulo : "")
+    const [descripcion, setDescripcion] = useState(eventoSeleccionado ? eventoSeleccionado.descripcion : "")
+    const [tiempo, setTiempo] = useState(eventoSeleccionado ? eventoSeleccionado.tiempo : "")
+    const [colorseleccionado, setcolorseleccionado] = useState(eventoSeleccionado ?
+        colores.find((col) => col === eventoSeleccionado.color)
+        : colores[0])
 
-    const handleDelete = (param) => {
-        const deleteItem = item.filter((item, index) => item.nombreTarea !== param.nombreTarea);
-        setItem([...deleteItem]);
-    };
-
-    const validate = (values) => {
-        const errors = {};
-        if (!values.nombreTarea) {
-            errors.nombreTarea = "Nombre de tarea es requerido!";
+    function handleSubmit(event){
+        event.preventDefault()
+        const calendarEvento = {
+            titulo,
+            descripcion,
+            tiempo,
+            color: colorseleccionado,
+            dia: dayjs.between('2023-03-01', '2023-03-31').format('YYYY-MM-DD'),
+            id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
         }
-        if (!values.prioridadTarea) {
-            errors.prioridadTarea = "Prioridad de tarea es requerido!";
-        }
-        if (!values.tiempoTarea) {
-            errors.tiempoTarea = "Tiempo de tarea es requerido!";
-        }
-        if (!values.descricpionTarea) {
-            errors.descricpionTarea = "Descripción de tarea es requerido!";
-        }
-        return errors;
-    };
-    let lista = localStorage.getItem("1");
-
-
+            despachoDeTareas({tipo:'push', carga:calendarEvento})
+            window.location.replace('/tareas');
+           }
     return (
-        <div className="mt-1 bg-purple-50 p-2">
-            <div className="bg-white hover:bg-amber-50 border flex flex-col rounded-lg shadow-lg hover:shadow-xl">
-                <h1 className="p-3 text-3xl font-semibold text-purple-600 italic">Agregar tareas</h1>
-            </div>
-            <div className="flex lg:flex-row md:flex-row flex-col">
-                <div className="p-3 lg:w-1/3 w-full">
-                    <div
-                        className="bg-white lg:p-8 p-5 rounded-lg border border-lime-600 hover:bg-lime-50 shadow-lg hover:shadow-xl">
-                        <h1 className="text-2xl text-center text-purple-600 mb-5 italic">Agregar tarea</h1>
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                name="nombreTarea"
-                                value={task.nombreTarea}
-                                onChange={handleChange}
-                                className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
-                                placeholder="Nombre de la tarea"
-                            />
-                            <p className="text-red-900">{formErrors.nombreTarea}</p>
-                            <br/>
-                            <select
-                                name="prioridadTarea"
-                                value={task.prioridadTarea}
-                                onChange={handleChange}
-                                className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
-                                placeholder="Prioridad"
-                            >
-                                <option className="text-gray-200">Prioridad</option>
-                                <option>Alta</option>
-                                <option>Media</option>
-                                <option>Baja</option>
-                            </select>
-                            <p className="text-red-900">{formErrors.prioridadTarea}</p>
-                            <br/>
-                            <input
-                                name="tiempoTarea"
-                                type="number" step={15} min={15}
-                                value={task.tiempoTarea}
-                                onChange={handleChange}
-                                className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
-                                placeholder="Tiempo de tarea"
-                            />
-                            <p className="text-red-900">{formErrors.tiempoTarea}</p>
-                            <br/>
-                            <textarea
-                                name="descricpionTarea"
-                                value={task.descricpionTarea}
-                                onChange={handleChange}
-                                className="placeholder:text-slate-500 block bg-white w-full border border-slate-300 rounded-md py-1 pl-5 pr-1 shadow-sm focus:outline-none focus:border-lime-500 focus:ring-lime-500 focus:lime-1 sm:text-sm"
-                                placeholder="Descripción tarea"
-                            />
-                            <p className="text-red-900">{formErrors.descricpionTarea}</p>
-                            <br/>
-                            <button
-                                className="px-10 py-2 lg:ml-12 text-md text-white bg-lime-600 rounded hover:bg-purple-400">
-                                Agregar
+        <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center ">
+            <form className="bg-white rounded-lg shadow-xl w-full md:w-1/2">
+                <header className="bg-indigo-50 p-3 flex justify-between items-center hidden">
+                    <div>
+                        {eventoSeleccionado && (
+                            <button onClick={()=> {
+                                despachoDeTareas({tipo:"delete", carga:eventoSeleccionado});
+                                setShowNodal(false)
+                            }}>
+                                <TfiEraser className=" text-red-500 cursor-pointer" onClick={() => setShowNodal(false)}/>
                             </button>
-                        </form>
+                        ) }
                     </div>
-                </div>
-                <div className="mr-auto mt-2 p-1 w-full">
-                    <div className="grid lg:grid-cols-3 gap-2 md:grid-cols-2 grid-cols-1 ">
-                        {item.map((obj, index) => {
-                            return (
-                                <div
-                                    className="bg-white p-5 rounded-xl border border-blue-500 hover:bg-blue-50 shadow-lg hover:shadow-xl"
-                                    key={index}>
-                                    <button
-                                        onClick={() => handleDelete(obj)}
-                                        className="float-right bg-red-500 px-2 text-white rounded-full"
+                    <TfiClose className=" text-gray-500 cursor-pointer" onClick={() => setShowNodal(false)}/>
+                </header>
+                <div className="p-2">
+                    <div className="grid grid-cols-1/5 items-end gap-1">
+                        <div></div>
+                        <input type="text" name="title" placeholder="Escribe tarea" value={titulo}
+                               onChange={(e) => setTitulo(e.target.value)} required={true} className="p-2 border-0 text-gray-600 text-xl
+                        font-semibold w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-600"/>
+                        <div className="flex items-center hidden">
+                            <TfiBook className="text-gray-400 text-sm m-3"/>
+                            <p>{diaSelected.format("dddd, MMMM DD").toUpperCase()}</p>
+                        </div>
+                        <div className="flex items-center">
+                            <TfiHarddrives className="text-gray-400 text-sm m-3"/>
+                            <input type="text" name="descripcion" placeholder="Escribe descripcion" value={descripcion}
+                                   onChange={(e) => setDescripcion(e.target.value)} required={true} className="p-2 border-0 text-gray-600 text-xl
+                                 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-600"/>
+                        </div>
+                        <div className="flex items-center">
+                            <TfiLoop className="text-gray-400 text-sm m-3"/>
+                            <input type="number" name="descripcion" placeholder="Define el tiempo (min)" value={tiempo}
+                                   step={15} min={0} max={1000}
+                                   onChange={(e) => setTiempo(e.target.value)} required={true} className="p-2 border-0 text-gray-600 text-xl
+                                 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-600"/>
+                        </div>
+                        <div className="flex items-center">
+                            <TfiPaintRoller className="text-gray-400 text-sm m-3"/>
+                            <div className="flex gap-x-2">
+                                {colores.map((color, i) => (
+                                    <span key={i}
+                                          className={`w-6 h-6 rounded-full flex items-center justify-center cursor-pointer bg-${color}-500`}
+                                          onClick={() => { setcolorseleccionado(color) }}
                                     >
-                                        x
-                                    </button>
-                                    <div className="mt-6 text-center p-1 md:p-0">
-                                        <div className="flex space-x-4 items-center justify-between">
-                                            <h1 className="text-purple-600">Nombre tarea:</h1>
-                                            <p className="text-xl">{obj.nombreTarea}</p>
-                                        </div>
-                                        <div className="flex space-x-4 items-center justify-between">
-                                            <h1 className="text-purple-600">Prioridad:</h1>
-                                            <p className="text-xl">{obj.prioridadTarea}</p>
-                                        </div>
-                                        <div className="flex space-x-4 items-center justify-between">
-                                            <h1 className="text-purple-600">Tiempo de tarea:</h1>
-                                            <p className="text-xl">{obj.tiempoTarea}</p>
-                                        </div>
-                                        <div className="flex space-x-4 items-center justify-between">
-                                            <h1 className="text-purple-600">Descripción tarea:</h1>
-                                            <p className="text-xl">{obj.descricpionTarea}</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            );
-                        })}
+                                        {colorseleccionado === color && (
+                                            <TfiPaintBucket className="text-white text-sm m-1"/>
+                                        )}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <footer className="flex justify-end border-t p-2 mt-2">
+                    <button type="submit" className="bg-purple-500 hover:bg-purple-400 p-3 rounded-lg text-white"
+                            onClick={handleSubmit}>
+                        Guardar
+                    </button>
+                </footer>
+            </form>
         </div>
 
     )

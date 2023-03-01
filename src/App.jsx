@@ -32,7 +32,7 @@ function App() {
                     <Route path="tareas"
                            element={<Tareas task={task} item={item} setItem={setItem} setTask={setTask}/>}/>
                     <Route path="horario"
-                           element={<Calendar />}/>
+                           element={<Calendar item={item} setItem={setItem} />}/>
                 </Routes>
             </div>
         </div>

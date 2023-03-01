@@ -65,7 +65,7 @@ function TareaModal() {
                         </div>
                         <div className="flex items-center">
                             <TfiLoop className="text-gray-400 text-sm m-3"/>
-                            <input type="number" name="descripcion" placeholder="Define el tiempo" value={tiempo}
+                            <input type="number" name="descripcion" placeholder="Define el tiempo (min)" value={tiempo}
                                    step={15} min={0} max={1000}
                                    onChange={(e) => setTiempo(e.target.value)} required={true} className="p-2 border-0 text-gray-600 text-xl
                                  w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-600"/>

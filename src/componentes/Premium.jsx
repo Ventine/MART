@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Premium() {
+function Premium() {
     const [showModal, setShowModal] = React.useState(false);
     return (
         <>
@@ -99,3 +99,5 @@ export default function Premium() {
         </>
     );
 }
+
+export default Premium;

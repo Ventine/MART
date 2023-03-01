@@ -1,7 +1,7 @@
 import React from "react";
 import {TfiCrown, TfiKey} from "react-icons/tfi";
 
-export default function InicioSesion({setLlave ,setSidebar}) {
+ function InicioSesion({setLlave ,setSidebar}) {
     const [showModal, setShowModal] = React.useState(false);
     const options = () => {
         setLlave(false)
@@ -88,3 +88,5 @@ export default function InicioSesion({setLlave ,setSidebar}) {
         </>
     );
 }
+
+export default InicioSesion;

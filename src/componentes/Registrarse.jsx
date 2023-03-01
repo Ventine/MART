@@ -1,7 +1,7 @@
 import React from "react";
 import {TfiCrown, TfiHummer, TfiFaceSmile, TfiLock, TfiHome, TfiLayoutCtaBtnRight} from "react-icons/tfi";
 
-export default function Registrarse() {
+ function Registrarse() {
     const [showModal, setShowModal] = React.useState(false);
     return (
         <>
@@ -99,3 +99,5 @@ export default function Registrarse() {
         </>
     );
 }
+
+export default Registrarse;
