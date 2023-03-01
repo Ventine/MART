@@ -26,7 +26,6 @@ function Tareas({ task, setTask, item, setItem}) {
             id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
         }
             despachoDeTareas({tipo:'push', carga:calendarEvento})
-            window.location.replace('/tareas');
            }
     return (
         <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center ">
