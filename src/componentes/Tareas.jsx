@@ -1,12 +1,22 @@
-import {TfiCheckBox, TfiClose, TfiBook, TfiHarddrives, TfiPaintRoller, TfiPaintBucket, TfiLoop, TfiEraser} from "react-icons/tfi";
-import {useContext, useState} from "react";
+import {
+    TfiCheckBox,
+    TfiClose,
+    TfiBook,
+    TfiHarddrives,
+    TfiPaintRoller,
+    TfiPaintBucket,
+    TfiLoop,
+    TfiEraser
+} from "react-icons/tfi";
+import React, {useContext, useState} from "react";
 import Global from "./Global.js";
 import dayjsRandom from 'dayjs-random'
 import dayjs from "dayjs";
-const colores = [ "blue", "red", "purple", "lime", "pink"];
+
+const colores = ["blue", "red", "purple", "lime", "pink"];
 dayjs.extend(dayjsRandom)
 
-function Tareas({ task, setTask, item, setItem}) {
+function Tareas({task, setTask, item, setItem}) {
     const {setShowNodal, diaSelected, despachoDeTareas, eventoSeleccionado} = useContext(Global)
     const [titulo, setTitulo] = useState(eventoSeleccionado ? eventoSeleccionado.titulo : "")
     const [descripcion, setDescripcion] = useState(eventoSeleccionado ? eventoSeleccionado.descripcion : "")
@@ -15,7 +25,7 @@ function Tareas({ task, setTask, item, setItem}) {
         colores.find((col) => col === eventoSeleccionado.color)
         : colores[0])
 
-    function handleSubmit(event){
+    function handleSubmit(event) {
         event.preventDefault()
         const calendarEvento = {
             titulo,
@@ -25,21 +35,27 @@ function Tareas({ task, setTask, item, setItem}) {
             dia: dayjs.between('2023-03-01', '2023-03-31').format('YYYY-MM-DD'),
             id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
         }
-            despachoDeTareas({tipo:'push', carga:calendarEvento})
-           }
+        setTitulo("");
+        setDescripcion("");
+        setTiempo("");
+        setcolorseleccionado("");
+        despachoDeTareas({tipo: 'push', carga: calendarEvento})
+    }
+
     return (
         <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center ">
             <form className="bg-white rounded-lg shadow-xl w-full md:w-1/2">
                 <header className="bg-indigo-50 p-3 flex justify-between items-center hidden">
                     <div>
                         {eventoSeleccionado && (
-                            <button onClick={()=> {
-                                despachoDeTareas({tipo:"delete", carga:eventoSeleccionado});
+                            <button onClick={() => {
+                                despachoDeTareas({tipo: "delete", carga: eventoSeleccionado});
                                 setShowNodal(false)
                             }}>
-                                <TfiEraser className=" text-red-500 cursor-pointer" onClick={() => setShowNodal(false)}/>
+                                <TfiEraser className=" text-red-500 cursor-pointer"
+                                           onClick={() => setShowNodal(false)}/>
                             </button>
-                        ) }
+                        )}
                     </div>
                     <TfiClose className=" text-gray-500 cursor-pointer" onClick={() => setShowNodal(false)}/>
                 </header>
@@ -72,7 +88,9 @@ function Tareas({ task, setTask, item, setItem}) {
                                 {colores.map((color, i) => (
                                     <span key={i}
                                           className={`w-6 h-6 rounded-full flex items-center justify-center cursor-pointer bg-${color}-500`}
-                                          onClick={() => { setcolorseleccionado(color) }}
+                                          onClick={() => {
+                                              setcolorseleccionado(color)
+                                          }}
                                     >
                                         {colorseleccionado === color && (
                                             <TfiPaintBucket className="text-white text-sm m-1"/>
