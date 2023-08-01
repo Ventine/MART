@@ -1,9 +1,10 @@
 import {TfiCalendar, TfiCheckBox, TfiClose, TfiMenu, TfiSaveAlt, TfiVector, TfiViewGrid} from "react-icons/tfi";
 import {Link, Outlet} from "react-router-dom";
-import Premium from "./Premium.jsx";
-import InicioSesion from "./InicioSesion.jsx";
+import Premium from "./Buzon.jsx";
+import Limpiar from "./Limpiar.jsx";
 import Registrarse from "./Registrarse.jsx";
 import React, {useState} from "react";
+import Buzon from "./Buzon.jsx";
 function NavBar({llave, setLlave}) {
     const [sidebar, setSidebar] = useState(false);
     const handleSidebar = () => {
@@ -48,19 +49,17 @@ function NavBar({llave, setLlave}) {
                 {llave ?
                     <div className="flex flex-col gap-2 mt-8">
                         <div className="bg-purple-50 p-3 flex flex-col gap-2 rounded-3xl">
-                            <p className="text-gray-500 text-center">Accede a muchas funcionalidades haciendote
-                                premium.</p>
-                            <Premium/>
+                            <p className="text-gray-500 text-center">Envia  sugerencias, con eso ayudaras mucho a la página..</p>
+                            <Buzon/>
                         </div>
-                        <InicioSesion setLlave={setLlave} setSidebar={setSidebar} />
+                        <Limpiar/>
                         <Registrarse />
                     </div>
                     :
                     <div className="flex flex-col gap-2 mt-4 items-center">
                         <div className="bg-purple-50 p-3 flex flex-col gap-2 rounded-3xl">
-                            <p className="text-gray-500 text-center">Accede a muchas funcionalidades haciendote
-                                premium.</p>
-                            <Premium/>
+                            <p className="text-gray-500 text-center">Dejanos tu comentario para mejorar la página.</p>
+                            <Buzon/>
                         </div>
                         <div
                             className="bg-purple-50 border border-purple-500 hover:bg-lime-50 hover:border-lime-500 rounded-lg p-1">
