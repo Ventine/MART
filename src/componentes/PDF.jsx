@@ -1,18 +1,18 @@
 import React from "react";
 import {TfiCrown, TfiHummer, TfiFaceSmile, TfiLock, TfiHome, TfiLayoutCtaBtnRight} from "react-icons/tfi";
 
- function Registrarse() {
+ function PDF() {
     const [showModal, setShowModal] = React.useState(false);
     return (
         <>
-            {/*Registrarse*/}
+            {/*PDF*/}
             <button
-                className="bg-purple-500 hover:bg-purple-600 text-white active:bg-lime-600 font-bold uppercase px-6 py-3 rounded-lg
+                className="bg-red-500 hover:bg-red-600 text-white active:bg-lime-600 font-bold uppercase px-6 py-3 rounded-lg
                 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
                 onClick={() => setShowModal(true)}
             >
-                Registrarse
+                PDF
             </button>
             {showModal ? (
                 <>
@@ -100,4 +100,4 @@ import {TfiCrown, TfiHummer, TfiFaceSmile, TfiLock, TfiHome, TfiLayoutCtaBtnRigh
     );
 }
 
-export default Registrarse;
+export default PDF;

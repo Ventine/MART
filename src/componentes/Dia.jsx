@@ -35,7 +35,7 @@ function Dia({dia, rowIdx}){
                     <div key={index}
                          onClick={()=> setEventoSeleccionado(evt)}
                         className={`bg-${evt.color}-500 p-1 m-1 text-white text-sm rounded truncate` }>
-                        {evt.titulo}
+                        {evt.titulo} {evt.tiempo} min
                     </div>
                 ))}
             </div>

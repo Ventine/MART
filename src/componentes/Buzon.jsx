@@ -31,7 +31,7 @@ function Buzon() {
                     <div
                         className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                         <div
-                            className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                            className="flex items-center justify-center p-2 border-b border-solid border-purple-200 rounded-t">
                             <TfiVector className="font-bold tracking-[5px] text-purple-800 m-1 text-2xl"/>
                             <h3 className="text-3xl font-semibold text-purple-600 ml-10">
                                 MART
@@ -46,11 +46,11 @@ function Buzon() {
                     </span>
                             </button>
                         </div>
-                        <div className="bg-green-100 flex items-center justify-center">
-                            <div className="bg-white w-96 p-6 rounded-lg shadow-lg">
+                        <div className="bg-green-100 flex items-center justify-center ">
+                            <div className="bg-white w-96 p-6 rounded-lg shadow-lg border-b border-solid border-purple-200 rounded-t">
                                 <h1 className="text-2xl font-bold text-green-600 mb-4">Buzón de sugerencia</h1>
                                 <form onSubmit={handleSubmit}>
-                                    <label className="text-black-500 mb-2 block">
+                                    <label className="text-black-500 mb-2 block text-lg">
                                         ¿Cómo calificarías tu nivel de satisfacción?
                                         <select
                                             className="block w-full p-2 border border-purple-600 rounded-md"
@@ -65,7 +65,7 @@ function Buzon() {
                                             <option value="muy-insatisfecho">Muy insatisfecho</option>
                                         </select>
                                     </label>
-                                    <label className="text-black-500 mt-4 block">
+                                    <label className="text-black-500 mt-4 block text-lg">
                                         ¿Algún comentario adicional?
                                         <textarea
                                             className="block w-full p-2 border border-purple-600 rounded-md"

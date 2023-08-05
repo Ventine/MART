@@ -12,7 +12,6 @@ const Limpiar = () => {
 
     const handleConfirm = () => {
         localStorage.clear();
-        // O también puedes usar "localStorage.removeItem('nombreDeTuItem')" para eliminar un item específico.
         setShowAlert(false);
         window.location.reload();
     };
@@ -25,7 +24,7 @@ const Limpiar = () => {
         <>
             <Button
                 onClick={handleClearLocalStorage}
-                className="bg-red-500 hover:bg-red-600 text-white active:bg-lime-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none
+                className="bg-green-500 hover:bg-green-600 text-white active:bg-lime-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none
                                         focus:outline-none mr-1 mb-1 mt-5 ease-linear transition-all duration-150 border-none"            >
                 Limpiar horario
             </Button>
@@ -38,15 +37,15 @@ const Limpiar = () => {
                     </h3>
                 </div>
                 <Modal.Header closeButton>
-                    <Modal.Title>Confirmar Borrado</Modal.Title>
+                    <Modal.Title className="text-2xl font-bold text-green-600 mb-4">Confirmar Borrado</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>¿Estás seguro que deseas borrar los datos almacenados?</Modal.Body>
+                <Modal.Body className="text-lg font-semibold text-black-600 ml-1">¿Estás seguro que deseas borrar los datos almacenados?</Modal.Body>
                 <Modal.Footer>
                     <Button className="bg-red-500 hover:bg-red-600 text-white active:bg-emerald-400-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none
                                         focus:outline-none mr-1 mb-1 mt-5 ease-linear transition-all duration-150 border-none" onClick={handleCancel}>
                         Cancelar
                     </Button>
-                    <Button className="bg-blue-500 hover:bg-blue-600 text-white active:bg-lime-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none
+                    <Button className="bg-green-500 hover:bg-green-600 text-white active:bg-lime-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none
                                         focus:outline-none mr-1 mb-1 mt-5 mr-10 ease-linear transition-all duration-150" onClick={handleConfirm}>
                         Borrar
                     </Button>

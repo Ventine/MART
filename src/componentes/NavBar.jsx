@@ -2,7 +2,7 @@ import {TfiCalendar, TfiCheckBox, TfiClose, TfiMenu, TfiSaveAlt, TfiVector, TfiV
 import {Link, Outlet} from "react-router-dom";
 import Premium from "./Buzon.jsx";
 import Limpiar from "./Limpiar.jsx";
-import Registrarse from "./Registrarse.jsx";
+import PDF from "./PDF.jsx";
 import React, {useState} from "react";
 import Buzon from "./Buzon.jsx";
 function NavBar({llave, setLlave}) {
@@ -53,7 +53,6 @@ function NavBar({llave, setLlave}) {
                             <Buzon/>
                         </div>
                         <Limpiar/>
-                        <Registrarse />
                     </div>
                     :
                     <div className="flex flex-col gap-2 mt-4 items-center">

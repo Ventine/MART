@@ -17,22 +17,36 @@ const colores = ["blue", "red", "purple", "lime", "pink"];
 dayjs.extend(dayjsRandom)
 
 function Tareas({task, setTask, item, setItem}) {
+    const startOfWeek = dayjs().format('YYYY-MM-DD');
+    const endOfWeek = dayjs().add(6, 'day').format('YYYY-MM-DD');
     const {setShowNodal, diaSelected, despachoDeTareas, eventoSeleccionado} = useContext(Global)
     const [titulo, setTitulo] = useState(eventoSeleccionado ? eventoSeleccionado.titulo : "")
     const [descripcion, setDescripcion] = useState(eventoSeleccionado ? eventoSeleccionado.descripcion : "")
-    const [tiempo, setTiempo] = useState(eventoSeleccionado ? eventoSeleccionado.tiempo : "")
+    let [tiempo, setTiempo] = useState(eventoSeleccionado ? eventoSeleccionado.tiempo : "")
     const [colorseleccionado, setcolorseleccionado] = useState(eventoSeleccionado ?
         colores.find((col) => col === eventoSeleccionado.color)
         : colores[0])
 
     function handleSubmit(event) {
         event.preventDefault()
-        const calendarEvento = {
+        let divisibleCount = 0;
+        let ventiCinco=  parseInt(tiempo);
+        while (25 <= ventiCinco) {
+            console.log(ventiCinco)
+            ventiCinco = ventiCinco - 25;
+            console.log(ventiCinco)
+            divisibleCount++;
+            console.log(divisibleCount)
+        }
+
+        while (divisibleCount > 0) {
+            tiempo = 25;
+            const calendarEvento = {
             titulo,
             descripcion,
             tiempo,
             color: colorseleccionado,
-            dia: dayjs.between('2023-03-01', '2023-03-31').format('YYYY-MM-DD'),
+            dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
             id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
         }
         setTitulo("");
@@ -40,6 +54,24 @@ function Tareas({task, setTask, item, setItem}) {
         setTiempo("");
         setcolorseleccionado("");
         despachoDeTareas({tipo: 'push', carga: calendarEvento})
+        divisibleCount--;
+        }
+        if(ventiCinco > 0){
+            tiempo = ventiCinco;
+            const calendarEvento = {
+                titulo,
+                descripcion,
+                tiempo,
+                color: colorseleccionado,
+                dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
+                id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
+            }
+            setTitulo("");
+            setDescripcion("");
+            setTiempo("");
+            setcolorseleccionado("");
+            despachoDeTareas({tipo: 'push', carga: calendarEvento})
+        }
     }
 
     return (
@@ -78,7 +110,7 @@ function Tareas({task, setTask, item, setItem}) {
                         <div className="flex items-center">
                             <TfiLoop className="text-gray-400 text-sm m-3"/>
                             <input type="number" name="descripcion" placeholder="Define el tiempo (min)" value={tiempo}
-                                   step={15} min={0} max={1000}
+                                   step={25} min={25} max={5000}
                                    onChange={(e) => setTiempo(e.target.value)} required={true} className="p-2 border-0 text-gray-600 text-xl
                                  w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-600"/>
                         </div>
