@@ -13,7 +13,7 @@ const Limpiar = () => {
     const handleConfirm = () => {
         localStorage.clear();
         setShowAlert(false);
-        window.location.reload();
+        window.location.href = window.location.href;
     };
 
     const handleCancel = () => {
