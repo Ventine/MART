@@ -20,7 +20,7 @@ function Buzon() {
             type="button"
             onClick={() => setShowModal(true)}
         >
-            Enviar sugerencia
+            Enviar sugerencias
         </button>
         {showModal ? (<>
             <div
