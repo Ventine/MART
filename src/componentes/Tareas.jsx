@@ -6,7 +6,9 @@ import {
     TfiPaintRoller,
     TfiPaintBucket,
     TfiLoop,
-    TfiEraser
+    TfiEraser,
+    TfiCheck,
+    TfiNa
 } from "react-icons/tfi";
 import React, {useContext, useState} from "react";
 import Global from "./Global.js";
@@ -26,56 +28,70 @@ function Tareas({task, setTask, item, setItem}) {
     const [colorseleccionado, setcolorseleccionado] = useState(eventoSeleccionado ?
         colores.find((col) => col === eventoSeleccionado.color)
         : colores[0])
+    const [showAlertT, setShowAlertT] = useState(false);
+    const [showAlertF, setShowAlertF] = useState(false);
 
     function handleSubmit(event) {
         event.preventDefault()
         let divisibleCount = 0;
         let ventiCinco=  parseInt(tiempo);
-        while (25 <= ventiCinco) {
-            console.log(ventiCinco)
-            ventiCinco = ventiCinco - 25;
-            console.log(ventiCinco)
-            divisibleCount++;
-            console.log(divisibleCount)
+        if(!(ventiCinco === 0 || ventiCinco == null || isNaN(ventiCinco)) ){
+
+            while (25 <= ventiCinco) {
+                ventiCinco = ventiCinco - 25;
+                divisibleCount++;
+            }
+
+            while (divisibleCount > 0) {
+                tiempo = 25;
+                const calendarEvento = {
+                    titulo,
+                    descripcion,
+                    tiempo,
+                    color: colorseleccionado,
+                    dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
+                    id: eventoSeleccionado ? eventoSeleccionado.id : ( Date.now() * Math.random() + Math.random() )
+                }
+                setTitulo("");
+                setDescripcion("");
+                setTiempo("");
+                setcolorseleccionado("");
+                despachoDeTareas({tipo: 'push', carga: calendarEvento})
+                divisibleCount--;
+            }
+            if(ventiCinco > 0){
+                tiempo = ventiCinco;
+                const calendarEvento = {
+                    titulo,
+                    descripcion,
+                    tiempo,
+                    color: colorseleccionado,
+                    dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
+                    id: eventoSeleccionado ? eventoSeleccionado.id : (Date.now() * Math.random() - Math.random() )
+                }
+                setTitulo("");
+                setDescripcion("");
+                setTiempo("");
+                setcolorseleccionado("");
+                despachoDeTareas({tipo: 'push', carga: calendarEvento})
+            }
+            setShowAlertT(true);
+            setTimeout(() => {
+                setShowAlertT(false);
+            }, 1300);
+        }else{
+            setShowAlertF(true);
+            setTimeout(() => {
+                setShowAlertF(false);
+            }, 1300);
         }
 
-        while (divisibleCount > 0) {
-            tiempo = 25;
-            const calendarEvento = {
-            titulo,
-            descripcion,
-            tiempo,
-            color: colorseleccionado,
-            dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
-            id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
-        }
-        setTitulo("");
-        setDescripcion("");
-        setTiempo("");
-        setcolorseleccionado("");
-        despachoDeTareas({tipo: 'push', carga: calendarEvento})
-        divisibleCount--;
-        }
-        if(ventiCinco > 0){
-            tiempo = ventiCinco;
-            const calendarEvento = {
-                titulo,
-                descripcion,
-                tiempo,
-                color: colorseleccionado,
-                dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
-                id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
-            }
-            setTitulo("");
-            setDescripcion("");
-            setTiempo("");
-            setcolorseleccionado("");
-            despachoDeTareas({tipo: 'push', carga: calendarEvento})
-        }
+
     }
 
+
     return (
-        <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center ">
+        <div className=" mt-24 w-full fixed left-0 top-0 flex justify-center items-center relative">
             <form className="bg-white rounded-lg shadow-xl w-full md:w-1/2">
                 <header className="bg-indigo-50 p-3 flex justify-between items-center hidden">
                     <div>
@@ -140,6 +156,20 @@ function Tareas({task, setTask, item, setItem}) {
                     </button>
                 </footer>
             </form>
+            {showAlertT && (
+                <div className="-mt-44 top-0 right-0 absolute p-4 bg-green-500 text-white rounded-lg shadow w-65 text-sm font-bold
+                flex justify-center items-center">
+                    <TfiCheck className="text-3xl m-2 p-2 font-bold"/>
+                    La tarea fue creada o modificada exitosamente !!
+                </div>
+            )}
+            {showAlertF && (
+                <div className="-mt-44 top-0 right-0 absolute p-4 bg-red-500 text-white rounded-lg shadow w-65 text-sm font-bold
+                flex justify-center items-center">
+                    <TfiNa className="text-3xl m-2 p-2 font-bold"/>
+                    La tarea NO fue creada o modificada exitosamente !!
+                </div>
+            )}
         </div>
 
     )

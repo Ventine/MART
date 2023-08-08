@@ -1,4 +1,14 @@
-import {TfiCheckBox, TfiClose, TfiBook, TfiHarddrives, TfiPaintRoller, TfiPaintBucket, TfiLoop, TfiEraser} from "react-icons/tfi";
+import {
+    TfiCheckBox,
+    TfiClose,
+    TfiBook,
+    TfiHarddrives,
+    TfiPaintRoller,
+    TfiPaintBucket,
+    TfiLoop,
+    TfiEraser,
+    TfiCheck, TfiNa
+} from "react-icons/tfi";
 import {useContext, useState} from "react";
 import Global from "./Global.js";
 
@@ -12,23 +22,38 @@ function TareaModal() {
     const [colorseleccionado, setcolorseleccionado] = useState(eventoSeleccionado ?
         colores.find((col) => col === eventoSeleccionado.color)
         : colores[0])
-
+    const [showAlertT, setShowAlertT] = useState(false);
+    const [showAlertF, setShowAlertF] = useState(false);
     function handleSubmit(event){
         event.preventDefault()
-        const calendarEvento = {
-            titulo,
-            descripcion,
-            tiempo,
-            color: colorseleccionado,
-            dia: diaSelected.valueOf(),
-            id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
-        }
-        if(eventoSeleccionado){
-            despachoDeTareas({tipo:'update', carga:calendarEvento})
+        let tiimeTrue=  parseInt(tiempo);
+        if(!(tiimeTrue === 0 || tiimeTrue == null || isNaN(tiimeTrue)) ){
+
+            const calendarEvento = {
+                titulo,
+                descripcion,
+                tiempo,
+                color: colorseleccionado,
+                dia: diaSelected.valueOf(),
+                id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
+            }
+            if(eventoSeleccionado){
+                despachoDeTareas({tipo:'update', carga:calendarEvento})
+            }else{
+                despachoDeTareas({tipo:'push', carga:calendarEvento})
+            }
+            setShowAlertT(true);
+            setTimeout(() => {
+                setShowAlertT(false);
+                setShowNodal(false)
+                console.log("Verde");
+            }, 1300);
         }else{
-            despachoDeTareas({tipo:'push', carga:calendarEvento})
+            setShowAlertF(true);
+            setTimeout(() => {
+                setShowAlertF(false);
+            }, 1300);
         }
-        setShowNodal(false)
     }
 
     return (
@@ -94,6 +119,20 @@ function TareaModal() {
                     </button>
                 </footer>
             </form>
+            {showAlertT && (
+                <div className="top-0 right-0 absolute m-3 p-2 bg-green-500 text-white rounded-lg shadow w-70 text-sm font-boldflex
+                justify-center items-center">
+                    <TfiCheck className="text-3xl p-1 font-bold"/>
+                    La tarea fue creada o modificada exitosamente !!
+                </div>
+            )}
+            {showAlertF && (
+                <div className="top-0 right-0 absolute m-3 p-2 bg-red-500 text-white rounded-lg shadow w-70 text-sm font-boldflex
+                justify-center items-center">
+                    <TfiNa className="text-3xl p-1 font-bold"/>
+                    La tarea NO fue creada o modificada exitosamente !!
+                </div>
+            )}
         </div>
     )
 }
