@@ -78,12 +78,12 @@ function Tareas({task, setTask, item, setItem}) {
             setShowAlertT(true);
             setTimeout(() => {
                 setShowAlertT(false);
-            }, 1300);
+            }, 1000);
         }else{
             setShowAlertF(true);
             setTimeout(() => {
                 setShowAlertF(false);
-            }, 1300);
+            }, 1000);
         }
 
 

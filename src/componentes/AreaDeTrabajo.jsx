@@ -17,7 +17,7 @@ function AreaDeTrabajo() {
                             className="text-purple-600 py-2 px-4 border-4 border-purple-700 relative rounded-lg ml-2 bg-white">Automático</span>
                     </h1>
                     <p className="text-gray-500 text-lg mt-5 leading-[2.5rem]">Ingresa tus tareas, dales tiempo y
-                        prioridad, ahora espera la magia,
+                        color, ahora espera la magia,
                         tendrás un horario elaborado para poder seguir tu día a día.</p>
                     <div className="flex items-center gap-5 m-auto flex-col sm:flex-row">
                         <Link to="/tareas">

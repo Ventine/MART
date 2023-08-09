@@ -24,6 +24,8 @@ function TareaModal() {
         : colores[0])
     const [showAlertT, setShowAlertT] = useState(false);
     const [showAlertF, setShowAlertF] = useState(false);
+    const [showAlertD, setShowAlertD] = useState(false);
+
     function handleSubmit(event){
         event.preventDefault()
         let tiimeTrue=  parseInt(tiempo);
@@ -46,15 +48,23 @@ function TareaModal() {
             setTimeout(() => {
                 setShowAlertT(false);
                 setShowNodal(false)
-                console.log("Verde");
-            }, 1300);
+            }, 1000);
         }else{
             setShowAlertF(true);
             setTimeout(() => {
                 setShowAlertF(false);
-            }, 1300);
+            }, 1000);
         }
     }
+
+    function handleDelete(event){
+        event.preventDefault()
+            setShowAlertD(true);
+            setTimeout(() => {
+                setShowAlertD(false);
+                setShowNodal(false);
+            }, 1000);
+        }
 
     return (
         <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-">
@@ -64,13 +74,12 @@ function TareaModal() {
                         {eventoSeleccionado && (
                             <button onClick={()=> {
                                 despachoDeTareas({tipo:"delete", carga:eventoSeleccionado});
-                                setShowNodal(false)
                             }}>
-                                <TfiEraser className=" text-red-500 cursor-pointer" onClick={() => setShowNodal(false)}/>
+                                <TfiEraser className=" text-red-500 cursor-pointer"  onClick={handleDelete} />
                             </button>
                         ) }
                     </div>
-                    <TfiClose className=" text-gray-500 cursor-pointer" onClick={() => setShowNodal(false)}/>
+                    <TfiClose className=" text-gray-500 cursor-pointer"  onClick={() => setShowNodal(false)}/>
                 </header>
                 <div className="p-2">
                     <div className="grid grid-cols-1/5 items-end gap-1">
@@ -120,17 +129,24 @@ function TareaModal() {
                 </footer>
             </form>
             {showAlertT && (
-                <div className="top-0 right-0 absolute m-3 p-2 bg-green-500 text-white rounded-lg shadow w-70 text-sm font-boldflex
+                <div className="top-0 right-0 absolute m-3 p-2 bg-green-500 text-white rounded-lg shadow w-70 text-sm font-bold flex
                 justify-center items-center">
                     <TfiCheck className="text-3xl p-1 font-bold"/>
                     La tarea fue creada o modificada exitosamente !!
                 </div>
             )}
             {showAlertF && (
-                <div className="top-0 right-0 absolute m-3 p-2 bg-red-500 text-white rounded-lg shadow w-70 text-sm font-boldflex
+                <div className="top-0 right-0 absolute m-3 p-2 bg-red-500 text-white rounded-lg shadow w-70 text-sm font-bold flex
                 justify-center items-center">
                     <TfiNa className="text-3xl p-1 font-bold"/>
                     La tarea NO fue creada o modificada exitosamente !!
+                </div>
+            )}
+            {showAlertD && (
+                <div className="top-0 right-0 absolute m-3 p-2 bg-green-500 text-white rounded-lg
+                                    shadow w-70 text-sm font-bold flex justify-center items-center">
+                    <TfiCheck className="text-3xl p-1 font-bold"/>
+                    La tarea fue eliminada exitosamente !!
                 </div>
             )}
         </div>
