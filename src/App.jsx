@@ -2,7 +2,7 @@ import React from 'react'
 import AreaDeTrabajo from "./componentes/AreaDeTrabajo.jsx";
 import HeaderSup from "./componentes/HeaderSup.jsx";
 import NavBar from "./componentes/NavBar.jsx";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import Tareas from "./componentes/Tareas.jsx";
 import {useState} from "react";
 import Perfil from "./componentes/Perfil.jsx";
@@ -26,12 +26,13 @@ function App() {
             <div className="col-span-5">
                 <HeaderSup llave={llave} item={item} setItem={setItem} />
                 <Routes>
-                    {llave ? <Route path="/" element={<AreaDeTrabajo />}/> :
+                    {llave ? <Route exact  path="/" element={<AreaDeTrabajo />}/> :
                         <Route path="/" element={<Perfil item={item}/>}/>}
 
-                    <Route path="tareas"
+                    <Route path="/tareas"
                            element={<Tareas task={task} item={item} setItem={setItem} setTask={setTask}/>}/>
-                    <Route path="horario"
+
+                    <Route path="/horario"
                            element={<Calendar item={item} setItem={setItem} />}/>
                 </Routes>
             </div>

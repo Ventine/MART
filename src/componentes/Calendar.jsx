@@ -15,7 +15,7 @@ function Calendar({item, setItem}){
     }, [mesIndex])
 
     return(
-        <div id="pdf">
+        <div className="max-h-50vh ">
             <React.Fragment>
                 {showNodal &&  <TareaModal /> }
                 <div className="h-screen flex flex-col">

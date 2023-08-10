@@ -67,8 +67,8 @@ function TareaModal() {
         }
 
     return (
-        <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-">
-            <form className="bg-white rounded-lg shadow-xl w-1/4">
+        <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center ">
+            <form className="bg-white rounded-lg shadow-xl w-5/6 sm:w-1/2 lg:w-1/4">
                 <header className="bg-indigo-50 p-3 flex justify-between items-center">
                     <div>
                         {eventoSeleccionado && (
