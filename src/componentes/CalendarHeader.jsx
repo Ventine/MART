@@ -20,7 +20,7 @@ function CalendarHeader(){
         <header className="p-2 flex items-center justify-between">
             <div className="flex flex-row mb-2">
                 <TfiAgenda className="text-purple-600 text-3xl mx-5" />
-                <h1 className="text-blue-600 text-2xl font-semibold">Horario generado</h1>
+                <h1 className="text-blue-600 text-2xl font-semibold"> Programación de actividades</h1>
             </div>
             <button className="border rounded p-2 mx-8 border border-blue-500 rounded-full" onClick={handleReset}> Hoy </button>
             <button className="cursor-pointer text-purple-600 mx-2" onClick={handlePrevMes }> <TfiAngleLeft /> </button>

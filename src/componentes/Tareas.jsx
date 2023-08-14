@@ -154,6 +154,7 @@ function Tareas({task, setTask, item, setItem}) {
                             onClick={handleSubmit}>
                         Guardar
                     </button>
+
                 </footer>
             </form>
             {showAlertT && (

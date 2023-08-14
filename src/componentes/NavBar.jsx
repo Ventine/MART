@@ -48,8 +48,8 @@ function NavBar({llave, setLlave}) {
                 </nav>
                 {llave ?
                     <div className="flex flex-col gap-2 mt-8">
-                        <div className="bg-purple-50 p-3 flex flex-col gap-2 rounded-3xl">
-                            <p className="text-gray-500 text-center">Envia  sugerencias, con eso ayudaras mucho a la página..</p>
+                        <div className="bg-white p-1 flex flex-col gap-2 rounded-3xl">
+                            <p className="text-gray-500 text-center"></p>
                             <Buzon/>
                         </div>
                         <Limpiar/>

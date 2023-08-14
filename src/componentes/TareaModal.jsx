@@ -16,7 +16,7 @@ const colores = [ "blue", "red", "purple", "lime", "pink"];
 
 function TareaModal() {
     const {setShowNodal, diaSelected, despachoDeTareas, eventoSeleccionado} = useContext(Global)
-    const [titulo, setTitulo] = useState(eventoSeleccionado ? eventoSeleccionado.titulo : "")
+    let [titulo, setTitulo] = useState(eventoSeleccionado ? eventoSeleccionado.titulo : "")
     const [descripcion, setDescripcion] = useState(eventoSeleccionado ? eventoSeleccionado.descripcion : "")
     const [tiempo, setTiempo] = useState(eventoSeleccionado ? eventoSeleccionado.tiempo : "")
     const [colorseleccionado, setcolorseleccionado] = useState(eventoSeleccionado ?
@@ -25,6 +25,8 @@ function TareaModal() {
     const [showAlertT, setShowAlertT] = useState(false);
     const [showAlertF, setShowAlertF] = useState(false);
     const [showAlertD, setShowAlertD] = useState(false);
+    const [showAlertE, setShowAlertE] = useState(false);
+
 
     function handleSubmit(event){
         event.preventDefault()
@@ -66,10 +68,42 @@ function TareaModal() {
             }, 1000);
         }
 
+    function handleEnd(event){
+        event.preventDefault()
+        let tiimeTrue=  parseInt(tiempo);
+        if(!(tiimeTrue === 0 || tiimeTrue == null || isNaN(tiimeTrue)) ){
+            const finalizado = " √" + titulo;
+            titulo = finalizado;
+            const calendarEvento = {
+                titulo,
+                descripcion,
+                tiempo,
+                color: "green",
+                dia: diaSelected.valueOf(),
+                id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
+            }
+            if(eventoSeleccionado){
+                despachoDeTareas({tipo:'update', carga:calendarEvento})
+            }else{
+                despachoDeTareas({tipo:'push', carga:calendarEvento})
+            }
+            setShowAlertE(true);
+            setTimeout(() => {
+                setShowAlertE(false);
+                setShowNodal(false)
+            }, 1000);
+        }else{
+            setShowAlertF(true);
+            setTimeout(() => {
+                setShowAlertF(false);
+            }, 1000);
+        }
+    }
+
     return (
         <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center ">
             <form className="bg-white rounded-lg shadow-xl w-5/6 sm:w-1/2 lg:w-1/4">
-                <header className="bg-indigo-50 p-3 flex justify-between items-center">
+                <header className="bg--50 p-3 flex justify-between items-center">
                     <div>
                         {eventoSeleccionado && (
                             <button onClick={()=> {
@@ -126,6 +160,14 @@ function TareaModal() {
                     onClick={handleSubmit}>
                         Guardar
                     </button>
+                    <div>
+                        {eventoSeleccionado && (
+                            <button type="submit" className="bg-green-500 hover:bg-green-400 p-3 rounded-lg text-white mx-3 p-4"
+                                    onClick={handleEnd} >
+                                Finalizar
+                            </button>
+                        ) }
+                    </div>
                 </footer>
             </form>
             {showAlertT && (
@@ -147,6 +189,13 @@ function TareaModal() {
                                     shadow w-70 text-sm font-bold flex justify-center items-center">
                     <TfiCheck className="text-3xl p-1 font-bold"/>
                     La tarea fue eliminada exitosamente !!
+                </div>
+            )}
+            {showAlertE && (
+                <div className="top-0 right-0 absolute m-3 p-2 bg-green-500 text-white rounded-lg
+                                    shadow w-70 text-sm font-bold flex justify-center itemss-center">
+                    <TfiCheck className="text-3xl p-1 font-bold"/>
+                    Felicitaciones por terminar la tarea !!
                 </div>
             )}
         </div>
