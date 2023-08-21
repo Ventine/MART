@@ -21,22 +21,31 @@ function App() {
     const [item, setItem] = useState([]);
     const [llave, setLlave] = useState(true);
     return (
-        <div className="min-h-screen grid grid-cols-1 lg:grid-cols-6">      {/*Pagina principal*/}
+        <div className="min-h-screen grid grid-cols-1 lg:grid-cols-6">
+            {/* Página principal */}
             <NavBar llave={llave} setLlave={setLlave} />
             <div className="col-span-5">
                 <HeaderSup llave={llave} item={item} setItem={setItem} />
                 <Routes>
-                    {llave ? <Route exact  path="/" element={<AreaDeTrabajo />}/> :
-                        <Route path="/" element={<Perfil item={item}/>}/>}
+                    {llave ? (
+                        <Route exact path="/" element={<AreaDeTrabajo />} />
+                    ) : (
+                        <Route path="/" element={<Perfil item={item} />} />
+                    )}
 
-                    <Route path="/tareas"
-                           element={<Tareas task={task} item={item} setItem={setItem} setTask={setTask}/>}/>
+                    <Route
+                        path="/tareas"
+                        element={<Tareas task={task} item={item} setItem={setItem} setTask={setTask} />}
+                    />
 
-                    <Route path="/horario"
-                           element={<Calendar item={item} setItem={setItem} />}/>
+                    <Route
+                        path="/horario"
+                        element={<Calendar item={item} setItem={setItem} />}
+                    />
                 </Routes>
             </div>
         </div>
+
     )
 }
 
