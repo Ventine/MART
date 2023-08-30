@@ -1,5 +1,4 @@
 import {
-    TfiCheckBox,
     TfiClose,
     TfiBook,
     TfiHarddrives,
@@ -18,6 +17,7 @@ import dayjs from "dayjs";
 const colores = ["blue", "red", "purple", "lime", "pink"];
 dayjs.extend(dayjsRandom)
 
+//Pagina Para crear tareas
 function Tareas({task, setTask, item, setItem}) {
     const startOfWeek = dayjs().format('YYYY-MM-DD');
     const endOfWeek = dayjs().add(6, 'day').format('YYYY-MM-DD');
@@ -34,8 +34,8 @@ function Tareas({task, setTask, item, setItem}) {
     function handleSubmit(event) {
         event.preventDefault()
         let divisibleCount = 0;
-        let ventiCinco=  parseInt(tiempo);
-        if(!(ventiCinco === 0 || ventiCinco == null || isNaN(ventiCinco)) ){
+        let ventiCinco = parseInt(tiempo);
+        if (!(ventiCinco === 0 || ventiCinco == null || isNaN(ventiCinco) || ventiCinco < 0)) {
 
             while (25 <= ventiCinco) {
                 ventiCinco = ventiCinco - 25;
@@ -50,7 +50,7 @@ function Tareas({task, setTask, item, setItem}) {
                     tiempo,
                     color: colorseleccionado,
                     dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
-                    id: eventoSeleccionado ? eventoSeleccionado.id : ( Date.now() * Math.random() + Math.random() )
+                    id: eventoSeleccionado ? eventoSeleccionado.id : (Date.now() * Math.random() + Math.random())
                 }
                 setTitulo("");
                 setDescripcion("");
@@ -59,7 +59,7 @@ function Tareas({task, setTask, item, setItem}) {
                 despachoDeTareas({tipo: 'push', carga: calendarEvento})
                 divisibleCount--;
             }
-            if(ventiCinco > 0){
+            if (ventiCinco > 0) {
                 tiempo = ventiCinco;
                 const calendarEvento = {
                     titulo,
@@ -67,7 +67,7 @@ function Tareas({task, setTask, item, setItem}) {
                     tiempo,
                     color: colorseleccionado,
                     dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
-                    id: eventoSeleccionado ? eventoSeleccionado.id : (Date.now() * Math.random() - Math.random() )
+                    id: eventoSeleccionado ? eventoSeleccionado.id : (Date.now() * Math.random() - Math.random())
                 }
                 setTitulo("");
                 setDescripcion("");
@@ -79,7 +79,7 @@ function Tareas({task, setTask, item, setItem}) {
             setTimeout(() => {
                 setShowAlertT(false);
             }, 1000);
-        }else{
+        } else {
             setShowAlertF(true);
             setTimeout(() => {
                 setShowAlertF(false);

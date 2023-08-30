@@ -1,5 +1,4 @@
 import {
-    TfiCheckBox,
     TfiClose,
     TfiBook,
     TfiHarddrives,
@@ -12,8 +11,9 @@ import {
 import {useContext, useState} from "react";
 import Global from "./Global.js";
 
-const colores = [ "blue", "red", "purple", "lime", "pink"];
+const colores = ["blue", "red", "purple", "lime", "pink"];
 
+//Modal tarea en el calendario generado en la pagina horario
 function TareaModal() {
     const {setShowNodal, diaSelected, despachoDeTareas, eventoSeleccionado} = useContext(Global)
     let [titulo, setTitulo] = useState(eventoSeleccionado ? eventoSeleccionado.titulo : "")
@@ -28,10 +28,10 @@ function TareaModal() {
     const [showAlertE, setShowAlertE] = useState(false);
 
 
-    function handleSubmit(event){
+    function handleSubmit(event) {
         event.preventDefault()
-        let tiimeTrue=  parseInt(tiempo);
-        if(!(tiimeTrue === 0 || tiimeTrue == null || isNaN(tiimeTrue)) ){
+        let tiimeTrue = parseInt(tiempo);
+        if (!(tiimeTrue === 0 || tiimeTrue == null || isNaN(tiimeTrue) || tiimeTrue < 0)) {
 
             const calendarEvento = {
                 titulo,
@@ -41,17 +41,17 @@ function TareaModal() {
                 dia: diaSelected.valueOf(),
                 id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
             }
-            if(eventoSeleccionado){
-                despachoDeTareas({tipo:'update', carga:calendarEvento})
-            }else{
-                despachoDeTareas({tipo:'push', carga:calendarEvento})
+            if (eventoSeleccionado) {
+                despachoDeTareas({tipo: 'update', carga: calendarEvento})
+            } else {
+                despachoDeTareas({tipo: 'push', carga: calendarEvento})
             }
             setShowAlertT(true);
             setTimeout(() => {
                 setShowAlertT(false);
                 setShowNodal(false)
             }, 1000);
-        }else{
+        } else {
             setShowAlertF(true);
             setTimeout(() => {
                 setShowAlertF(false);
@@ -59,19 +59,19 @@ function TareaModal() {
         }
     }
 
-    function handleDelete(event){
+    function handleDelete(event) {
         event.preventDefault()
-            setShowAlertD(true);
-            setTimeout(() => {
-                setShowAlertD(false);
-                setShowNodal(false);
-            }, 1000);
-        }
+        setShowAlertD(true);
+        setTimeout(() => {
+            setShowAlertD(false);
+            setShowNodal(false);
+        }, 1000);
+    }
 
-    function handleEnd(event){
+    function handleEnd(event) {
         event.preventDefault()
-        let tiimeTrue=  parseInt(tiempo);
-        if(!(tiimeTrue === 0 || tiimeTrue == null || isNaN(tiimeTrue)) ){
+        let tiimeTrue = parseInt(tiempo);
+        if (!(tiimeTrue === 0 || tiimeTrue == null || isNaN(tiimeTrue) || tiimeTrue < 0)) {
             const finalizado = " √" + titulo;
             titulo = finalizado;
             const calendarEvento = {
@@ -82,17 +82,17 @@ function TareaModal() {
                 dia: diaSelected.valueOf(),
                 id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
             }
-            if(eventoSeleccionado){
-                despachoDeTareas({tipo:'update', carga:calendarEvento})
-            }else{
-                despachoDeTareas({tipo:'push', carga:calendarEvento})
+            if (eventoSeleccionado) {
+                despachoDeTareas({tipo: 'update', carga: calendarEvento})
+            } else {
+                despachoDeTareas({tipo: 'push', carga: calendarEvento})
             }
             setShowAlertE(true);
             setTimeout(() => {
                 setShowAlertE(false);
                 setShowNodal(false)
             }, 1000);
-        }else{
+        } else {
             setShowAlertF(true);
             setTimeout(() => {
                 setShowAlertF(false);
@@ -106,14 +106,14 @@ function TareaModal() {
                 <header className="bg--50 p-3 flex justify-between items-center">
                     <div>
                         {eventoSeleccionado && (
-                            <button onClick={()=> {
-                                despachoDeTareas({tipo:"delete", carga:eventoSeleccionado});
+                            <button onClick={() => {
+                                despachoDeTareas({tipo: "delete", carga: eventoSeleccionado});
                             }}>
-                                <TfiEraser className=" text-red-500 cursor-pointer"  onClick={handleDelete} />
+                                <TfiEraser className=" text-red-500 cursor-pointer" onClick={handleDelete}/>
                             </button>
-                        ) }
+                        )}
                     </div>
-                    <TfiClose className=" text-gray-500 cursor-pointer"  onClick={() => setShowNodal(false)}/>
+                    <TfiClose className=" text-gray-500 cursor-pointer" onClick={() => setShowNodal(false)}/>
                 </header>
                 <div className="p-2">
                     <div className="grid grid-cols-1/5 items-end gap-1">
@@ -144,7 +144,9 @@ function TareaModal() {
                                 {colores.map((color, i) => (
                                     <span key={i}
                                           className={`w-6 h-6 rounded-full flex items-center justify-center cursor-pointer bg-${color}-500`}
-                                          onClick={() => { setcolorseleccionado(color) }}
+                                          onClick={() => {
+                                              setcolorseleccionado(color)
+                                          }}
                                     >
                                         {colorseleccionado === color && (
                                             <TfiPaintBucket className="text-white text-sm m-1"/>
@@ -157,16 +159,17 @@ function TareaModal() {
                 </div>
                 <footer className="flex justify-end border-t p-2 mt-2">
                     <button type="submit" className="bg-purple-500 hover:bg-purple-400 p-3 rounded-lg text-white"
-                    onClick={handleSubmit}>
+                            onClick={handleSubmit}>
                         Guardar
                     </button>
                     <div>
                         {eventoSeleccionado && (
-                            <button type="submit" className="bg-green-500 hover:bg-green-400 p-3 rounded-lg text-white mx-3 p-4"
-                                    onClick={handleEnd} >
+                            <button type="submit"
+                                    className="bg-green-500 hover:bg-green-400 p-3 rounded-lg text-white mx-3 p-4"
+                                    onClick={handleEnd}>
                                 Finalizar
                             </button>
-                        ) }
+                        )}
                     </div>
                 </footer>
             </form>

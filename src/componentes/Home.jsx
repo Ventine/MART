@@ -1,8 +1,10 @@
-import {TfiCrown, TfiControlStop, TfiCheckBox, TfiRulerAlt, TfiFiles, TfiViewGrid, TfiCalendar} from "react-icons/tfi";
+import {TfiCrown, TfiControlStop, TfiCheckBox, TfiRulerAlt, TfiFiles} from "react-icons/tfi";
 import React from "react";
 import {Link} from "react-router-dom";
 
-function AreaDeTrabajo() {
+//Pagina principal
+
+function Home() {
 
     return (
         <div className="h-[80vh] flex flex-col sm:flex-row ml-5">
@@ -52,4 +54,4 @@ function AreaDeTrabajo() {
     )
 }
 
-export default AreaDeTrabajo;
+export default Home;

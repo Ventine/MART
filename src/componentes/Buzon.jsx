@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {TfiCheck, TfiVector} from "react-icons/tfi";
 
+//Boton y modal para enviar sugerencias
 function Buzon() {
     const [showModal, setShowModal] = React.useState(false);
     const [satisfaccion, setSatisfaccion] = useState('');
@@ -21,7 +22,7 @@ function Buzon() {
     return (<>
         {/*Premium*/}
         <button
-            className="bg-pink-500 hover:bg-pink-600 text-white active:bg-pink-600 font-bold uppercase text-sm px-3 py-2 rounded
+            className="bg-pink-500 hover:bg-pink-600 text-white active:bg-pink-600 font-bold uppercase text-sm p-3 rounded
                 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button"
             onClick={() => setShowModal(true)}
@@ -36,29 +37,21 @@ function Buzon() {
                     <div
                         className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                         <div
-                            className="flex items-center justify-center p-2 border-b border-solid border-purple-200 rounded-t">
+                            className="flex items-center p-3 m-3 border-b border-solid border-purple-200 rounded-t">
                             <TfiVector className="font-bold tracking-[5px] text-purple-800 m-1 text-2xl"/>
                             <h3 className="text-3xl font-semibold text-purple-600 ml-10">
                                 MART
                             </h3>
-                            <button
-                                className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                                onClick={() => setShowModal(false)}
-                            >
-                    <span
-                        className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
-                            </button>
                         </div>
                         <div className="bg-green-100 flex items-center justify-center ">
-                            <div className="bg-white w-96 p-6 rounded-lg shadow-lg border-b border-solid border-purple-200 rounded-t">
-                                <h1 className="text-2xl font-bold text-green-600 mb-4">Buzón de sugerencia</h1>
+                            <div
+                                className="bg-white w-96 p-6 rounded-lg shadow-lg border-b border-solid border-purple-200 rounded-t">
+                                <h1 className="text-xl font-bold text-green-600 mb-4">Buzón de sugerencia</h1>
                                 <form onSubmit={handleSubmit}>
-                                    <label className="mb-2 block text-lg text-gray-500 font-semibold">
+                                    <label className="mb-2 block text-sm text-gray-500 font-semibold">
                                         ¿Cómo calificarías tu nivel de satisfacción?
                                         <select
-                                            className="block w-full p-2 border border-purple-600 rounded-md"
+                                            className="block w-full p-2 border border-purple-600 rounded-md text-sm my-2"
                                             value={satisfaccion}
                                             onChange={(e) => setSatisfaccion(e.target.value)}
                                         >
@@ -70,10 +63,10 @@ function Buzon() {
                                             <option value="muy-insatisfecho">Muy insatisfecho</option>
                                         </select>
                                     </label>
-                                    <label className="text-black-500 mt-4 block text-lg text-gray-500 font-semibold">
+                                    <label className="text-black-500 mt-4 block text-sm text-gray-500 font-semibold">
                                         ¿Algún comentario adicional?
                                         <textarea
-                                            className="block w-full p-2 border border-purple-600 rounded-md"
+                                            className="block w-full p-2 border border-purple-600 rounded-md text-sm  my-2"
                                             value={comentario}
                                             onChange={(e) => setComentario(e.target.value)}
                                             placeholder="Escribe aquí tu comentario..."

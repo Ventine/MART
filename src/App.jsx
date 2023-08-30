@@ -1,13 +1,13 @@
 import React from 'react'
-import AreaDeTrabajo from "./componentes/AreaDeTrabajo.jsx";
+import Home from "./componentes/Home.jsx";
 import HeaderSup from "./componentes/HeaderSup.jsx";
 import NavBar from "./componentes/NavBar.jsx";
 import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import Tareas from "./componentes/Tareas.jsx";
 import {useState} from "react";
-import Perfil from "./componentes/Perfil.jsx";
 import Calendar from "./componentes/Calendar.jsx";
 
+//Une todos los componentes, archivo que carga la pagina
 function App() {
 
     const [task, setTask] = useState({
@@ -19,33 +19,27 @@ function App() {
 
 
     const [item, setItem] = useState([]);
-    const [llave, setLlave] = useState(true);
     return (
         <div className="min-h-screen grid grid-cols-1 lg:grid-cols-6">
-            {/* Página principal */}
-            <NavBar llave={llave} setLlave={setLlave} />
+            <NavBar />
             <div className="col-span-5">
-                <HeaderSup llave={llave} item={item} setItem={setItem} />
+                <HeaderSup />
                 <Routes>
-                    {llave ? (
-                        <Route exact path="/" element={<AreaDeTrabajo />} />
-                    ) : (
-                        <Route path="/" element={<Perfil item={item} />} />
-                    )}
-
+                    <Route path="/" element={<Home />} />
                     <Route
                         path="/tareas"
                         element={<Tareas task={task} item={item} setItem={setItem} setTask={setTask} />}
                     />
-
                     <Route
                         path="/horario"
                         element={<Calendar item={item} setItem={setItem} />}
                     />
+                    <Route path="/calendario" element={<Navigate to="/" />} />
+                    <Route path="/horario/*" element={<Navigate to="/" />} />
+                    <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </div>
         </div>
-
     )
 }
 

@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 
-export function  obtenerMes(month = dayjs().month()){
+//Se devuelve una fecha especifica
+export function obtenerMes(month = dayjs().month()) {
     month = Math.floor(month)
     const year = dayjs().year();
     const primerDia = dayjs(new Date(year, month, 1)).day()

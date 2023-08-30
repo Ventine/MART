@@ -2,10 +2,11 @@ import Global from "./Global.js";
 import React, {useEffect, useReducer, useState} from "react";
 import dayjs from "dayjs";
 
-function guardarDespacho(estado, {tipo, carga}){
-    switch (tipo){
+//Variables y metodos usados en la funcionalidad
+function guardarDespacho(estado, {tipo, carga}) {
+    switch (tipo) {
         case 'push':
-            return [... estado, carga]
+            return [...estado, carga]
         case 'update':
             return estado.map((ev) => ev.id === carga.id ? carga : ev)
         case 'delete':
@@ -15,18 +16,19 @@ function guardarDespacho(estado, {tipo, carga}){
     }
 }
 
-function iniciarTareas(){
+function iniciarTareas() {
     const storageTareas = localStorage.getItem('tareasGuardadas')
     const parseTareas = storageTareas ? JSON.parse(storageTareas) : []
     return parseTareas
 }
-function Wrapper(props){
+
+function Wrapper(props) {
     const [mesIndex, setMesIndex] = useState(dayjs().month())
     const [calendarioPequenomes, setCalendarioPequenomes] = useState(null)
     const [diaSelected, setDiaSelected] = useState(dayjs())
     const [showNodal, setShowNodal] = useState(false)
     const [eventoSeleccionado, setEventoSeleccionado] = useState(null)
-    const [guardarTarea, despachoDeTareas] = useReducer(guardarDespacho, [], iniciarTareas )
+    const [guardarTarea, despachoDeTareas] = useReducer(guardarDespacho, [], iniciarTareas)
 
     useEffect(() => {
         localStorage.setItem('tareasGuardadas', JSON.stringify(guardarTarea))
@@ -34,20 +36,22 @@ function Wrapper(props){
 
 
     useEffect(() => {
-        if(calendarioPequenomes !== null){
+        if (calendarioPequenomes !== null) {
             setMesIndex(calendarioPequenomes)
         }
     }, [calendarioPequenomes])
 
     useEffect(() => {
-        if(!showNodal){
+        if (!showNodal) {
             setEventoSeleccionado(null);
         }
     }, [showNodal])
 
-    return(
-        <Global.Provider value={{mesIndex, setMesIndex, calendarioPequenomes, setCalendarioPequenomes, diaSelected, setDiaSelected
-        , showNodal, setShowNodal, despachoDeTareas, guardarTarea, eventoSeleccionado, setEventoSeleccionado}}>
+    return (
+        <Global.Provider value={{
+            mesIndex, setMesIndex, calendarioPequenomes, setCalendarioPequenomes, diaSelected, setDiaSelected
+            , showNodal, setShowNodal, despachoDeTareas, guardarTarea, eventoSeleccionado, setEventoSeleccionado
+        }}>
             {props.children}
         </Global.Provider>
     )

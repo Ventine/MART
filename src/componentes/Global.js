@@ -1,19 +1,25 @@
-
 import React from "react";
 
+//Variables globales
 const Global = React.createContext({
     mesIndex: 0,
-    setMesIndex: (index) => {},
-    calendarioPequenomes : 0,
-    setCalendarioPequenomes: (index) => {},
+    setMesIndex: (index) => {
+    },
+    calendarioPequenomes: 0,
+    setCalendarioPequenomes: (index) => {
+    },
     diaSelected: null,
-    setDiaSelected : (dia) => {},
+    setDiaSelected: (dia) => {
+    },
     showNodal: false,
-    setShowNodal : () => {},
-    despachoDeTareas: ({tipo, carga}) => {},
+    setShowNodal: () => {
+    },
+    despachoDeTareas: ({tipo, carga}) => {
+    },
     guardarTarea: [],
     eventoSeleccionado: null,
-    setEventoSeleccionado: () => {},
+    setEventoSeleccionado: () => {
+    },
 
 });
 
