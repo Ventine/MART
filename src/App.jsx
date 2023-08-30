@@ -34,9 +34,6 @@ function App() {
                         path="/horario"
                         element={<Calendar item={item} setItem={setItem} />}
                     />
-                    <Route path="/calendario" element={<Navigate to="/" />} />
-                    <Route path="/horario/*" element={<Navigate to="/" />} />
-                    <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </div>
         </div>
