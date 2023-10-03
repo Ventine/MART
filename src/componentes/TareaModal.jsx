@@ -29,7 +29,7 @@ function TareaModal() {
 
 
     function handleSubmit(event) {
-        event.preventDefault()
+        event.preventDefault();
         let tiimeTrue = parseInt(tiempo);
         if (!(tiimeTrue === 0 || tiimeTrue == null || isNaN(tiimeTrue) || tiimeTrue < 0)) {
 
@@ -37,7 +37,7 @@ function TareaModal() {
                 titulo,
                 descripcion,
                 tiempo,
-                color: colorseleccionado,
+                color: "lime",
                 dia: diaSelected.valueOf(),
                 id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
             }
