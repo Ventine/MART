@@ -89,9 +89,110 @@ function Tareas({task, setTask, item, setItem}) {
 
     }
 
+    function handleReco(event, valor) {
+        event.preventDefault()
+        let ventiCinco = 100;
+        let titulo = "";
+        let descripcion = "";
+        let colorSelec = "";
+        if(valor === 1){
+            let tituloUno = "Cardio";
+            let descripcionUno = "Rutina de Cardio";
+            let colorUno = "blue";
+            titulo = tituloUno;
+            descripcion = descripcionUno;
+            colorSelec = colorUno;
+        }else if(valor === 2){
+            let tituloUno = "Musculos";
+            let descripcionUno = "Rutina brazos/piernas";
+            let colorUno = "yellow";
+            titulo = tituloUno;
+            descripcion = descripcionUno;
+            colorSelec = colorUno;
+        }else if(valor === 3){
+            let tituloUno = "Meditar";
+            let descripcionUno = "Relaja tu mente";
+            let colorUno = "cyan";
+            titulo = tituloUno;
+            descripcion = descripcionUno;
+            colorSelec = colorUno;
+        }else if(valor === 4){
+            let tituloUno = "Estudiar";
+            let descripcionUno = "Mejora tu conocimiento";
+            let colorUno = "emerald";
+            titulo = tituloUno;
+            descripcion = descripcionUno;
+            colorSelec = colorUno;
+        }else if(valor === 5){
+            let tituloUno = "Procastinar";
+            let descripcionUno = "Disfruta de tiempo libre";
+            let colorUno = "orange";
+            titulo = tituloUno;
+            descripcion = descripcionUno;
+            colorSelec = colorUno;
+        }else{
+            let tituloUno = "Siesta";
+            let descripcionUno = "Descansa tu mente";
+            let colorUno = "rose";
+            titulo = tituloUno;
+            descripcion = descripcionUno;
+            colorSelec = colorUno;
+        }
+        let divisibleCount = 0;
+        if (!(ventiCinco === 0 || ventiCinco == null || isNaN(ventiCinco) || ventiCinco < 0)) {
+
+            while (25 <= ventiCinco) {
+                ventiCinco = ventiCinco - 25;
+                divisibleCount++;
+            }
+
+            while (divisibleCount > 0) {
+                tiempo = 25;
+                const calendarEvento = {
+                    titulo,
+                    descripcion,
+                    tiempo,
+                    color: colorSelec,
+                    dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
+                    id: eventoSeleccionado ? eventoSeleccionado.id : (Date.now() * Math.random() + Math.random())
+                }
+                setTitulo("");
+                setDescripcion("");
+                setTiempo("");
+                setcolorseleccionado("");
+                despachoDeTareas({tipo: 'push', carga: calendarEvento})
+                divisibleCount--;
+            }
+            if (ventiCinco > 0) {
+                tiempo = ventiCinco;
+                const calendarEvento = {
+                    titulo,
+                    descripcion,
+                    tiempo,
+                    color: colorseleccionado,
+                    dia: dayjs.between(`${startOfWeek}`, `${endOfWeek}`).format('YYYY-MM-DD'),
+                    id: eventoSeleccionado ? eventoSeleccionado.id : (Date.now() * Math.random() - Math.random())
+                }
+                setTitulo("");
+                setDescripcion("");
+                setTiempo("");
+                setcolorseleccionado("");
+                despachoDeTareas({tipo: 'push', carga: calendarEvento})
+            }
+            setShowAlertT(true);
+            setTimeout(() => {
+                setShowAlertT(false);
+            }, 1000);
+        } else {
+            setShowAlertF(true);
+            setTimeout(() => {
+                setShowAlertF(false);
+            }, 1000);
+        }
+    }
 
     return (
-        <div className=" mt-24 w-full fixed left-0 top-0 flex justify-center items-center relative">
+        <div className=" mt-24 w-full fixed left-0 top-0 flex flex-col justify-center items-center relative">
             <form className="bg-white rounded-lg shadow-xl w-full md:w-1/2">
                 <header className="bg-indigo-50 p-3 flex justify-between items-center hidden">
                     <div>
@@ -150,7 +251,7 @@ function Tareas({task, setTask, item, setItem}) {
                     </div>
                 </div>
                 <footer className="flex justify-end border-t p-2 mt-2">
-                    <button type="submit" className="bg-purple-500 hover:bg-purple-400 p-3 rounded-lg text-white"
+                    <button type="submit" className="bg-purple-500 hover:bg-purple-400 px-6 py-3 rounded-lg text-white mr-10"
                             onClick={handleSubmit}>
                         Guardar
                     </button>
@@ -171,6 +272,21 @@ function Tareas({task, setTask, item, setItem}) {
                     La tarea NO fue creada o modificada exitosamente !!
                 </div>
             )}
+            <div className="">
+                    <button className="mx-4 p-2 border border-none m-4 rounded
+                    bg-blue-500 text-white hover:bg-blue-700" onClick={(event) => handleReco(event, 1)}>Cardio</button>
+                    <button className="mx-4 p-2 border border-none m-4 rounded
+                    bg-yellow-500 text-white hover:bg-yellow-700" onClick={(event) => handleReco(event, 2)}>Musculos</button>
+                    <button className="mx-4 p-2 border border-none m-4 rounded
+                    bg-cyan-500 text-white hover:bg-cyan-700" onClick={(event) => handleReco(event, 3)}>Meditar</button>
+                    <button className="mx-4 p-2 border border-none m-4 rounded
+                    bg-emerald-500 text-white hover:bg-emerald-700" onClick={(event) => handleReco(event, 4)}>Estudiar</button>
+                    <button className="mx-4 p-2 border border-none m-4 rounded
+                    bg-orange-500 text-white hover:bg-orange-700" onClick={(event) => handleReco(event, 5)}>Procastinar</button>
+                    <button className="mx-4 p-2 border border-none m-4 rounded
+                    bg-rose-500 text-white hover:bg-rose-700" onClick={(event) => handleReco(event, 6)}>Siesta</button>
+            </div>
+
         </div>
 
     )
