@@ -98,28 +98,28 @@ function Tareas({task, setTask, item, setItem}) {
         if(valor === 1){
             let tituloUno = "Cardio";
             let descripcionUno = "Rutina de Cardio";
-            let colorUno = "pink";
+            let colorUno = "green";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
         }else if(valor === 2){
             let tituloUno = "Musculos";
             let descripcionUno = "Rutina brazos/piernas";
-            let colorUno = "pink";
+            let colorUno = "red";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
         }else if(valor === 3){
             let tituloUno = "Meditar";
             let descripcionUno = "Relaja tu mente";
-            let colorUno = "pink";
+            let colorUno = "purple";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
         }else if(valor === 4){
             let tituloUno = "Estudiar";
             let descripcionUno = "Mejora tu conocimiento";
-            let colorUno = "pink";
+            let colorUno = "lime";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
@@ -133,7 +133,7 @@ function Tareas({task, setTask, item, setItem}) {
         }else{
             let tituloUno = "Siesta";
             let descripcionUno = "Descansa tu mente";
-            let colorUno = "pink";
+            let colorUno = "green";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
@@ -274,17 +274,17 @@ function Tareas({task, setTask, item, setItem}) {
             )}
             <div className="">
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 1)}>Cardio</button>
+                    bg-green-500 text-white hover:bg-green-800" onClick={(event) => handleReco(event, 1)}>Cardio</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 2)}>Musculos</button>
+                    bg-red-500 text-white hover:bg-red-800" onClick={(event) => handleReco(event, 2)}>Musculos</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 3)}>Meditar</button>
+                    bg-purple-500 text-white hover:bg-purple-800" onClick={(event) => handleReco(event, 3)}>Meditar</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 4)}>Estudiar</button>
+                    bg-lime-500 text-white hover:bg-lime-800" onClick={(event) => handleReco(event, 4)}>Estudiar</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
                     bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 5)}>Procastinar</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 6)}>Siesta</button>
+                    bg-green-500 text-white hover:bg-green-800" onClick={(event) => handleReco(event, 6)}>Siesta</button>
             </div>
 
         </div>
