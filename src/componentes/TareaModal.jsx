@@ -11,7 +11,7 @@ import {
 import {useContext, useState} from "react";
 import Global from "./Global.js";
 
-const colores = ["blue", "red", "purple", "lime", "pink"];
+const colores = ["green", "red", "purple", "lime", "pink"];
 
 //Modal tarea en el calendario generado en la pagina horario
 function TareaModal() {

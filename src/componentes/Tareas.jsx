@@ -14,7 +14,7 @@ import Global from "./Global.js";
 import dayjsRandom from 'dayjs-random'
 import dayjs from "dayjs";
 
-const colores = ["blue", "red", "purple", "lime", "pink"];
+const colores = ["green", "red", "purple", "lime", "pink"];
 dayjs.extend(dayjsRandom)
 
 //Pagina Para crear tareas
