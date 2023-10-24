@@ -98,42 +98,42 @@ function Tareas({task, setTask, item, setItem}) {
         if(valor === 1){
             let tituloUno = "Cardio";
             let descripcionUno = "Rutina de Cardio";
-            let colorUno = "blue";
+            let colorUno = "pink";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
         }else if(valor === 2){
             let tituloUno = "Musculos";
             let descripcionUno = "Rutina brazos/piernas";
-            let colorUno = "yellow";
+            let colorUno = "pink";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
         }else if(valor === 3){
             let tituloUno = "Meditar";
             let descripcionUno = "Relaja tu mente";
-            let colorUno = "cyan";
+            let colorUno = "pink";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
         }else if(valor === 4){
             let tituloUno = "Estudiar";
             let descripcionUno = "Mejora tu conocimiento";
-            let colorUno = "emerald";
+            let colorUno = "pink";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
         }else if(valor === 5){
             let tituloUno = "Procastinar";
             let descripcionUno = "Disfruta de tiempo libre";
-            let colorUno = "orange";
+            let colorUno = "pink";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
         }else{
             let tituloUno = "Siesta";
             let descripcionUno = "Descansa tu mente";
-            let colorUno = "rose";
+            let colorUno = "pink";
             titulo = tituloUno;
             descripcion = descripcionUno;
             colorSelec = colorUno;
@@ -274,17 +274,17 @@ function Tareas({task, setTask, item, setItem}) {
             )}
             <div className="">
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-blue-500 text-white hover:bg-blue-700" onClick={(event) => handleReco(event, 1)}>Cardio</button>
+                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 1)}>Cardio</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-yellow-500 text-white hover:bg-yellow-700" onClick={(event) => handleReco(event, 2)}>Musculos</button>
+                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 2)}>Musculos</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-cyan-500 text-white hover:bg-cyan-700" onClick={(event) => handleReco(event, 3)}>Meditar</button>
+                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 3)}>Meditar</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-emerald-500 text-white hover:bg-emerald-700" onClick={(event) => handleReco(event, 4)}>Estudiar</button>
+                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 4)}>Estudiar</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-orange-500 text-white hover:bg-orange-700" onClick={(event) => handleReco(event, 5)}>Procastinar</button>
+                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 5)}>Procastinar</button>
                     <button className="mx-4 p-2 border border-none m-4 rounded
-                    bg-rose-500 text-white hover:bg-rose-700" onClick={(event) => handleReco(event, 6)}>Siesta</button>
+                    bg-pink-500 text-white hover:bg-pink-800" onClick={(event) => handleReco(event, 6)}>Siesta</button>
             </div>
 
         </div>

@@ -37,7 +37,7 @@ function TareaModal() {
                 titulo,
                 descripcion,
                 tiempo,
-                color: "lime",
+                color: colorseleccionado,
                 dia: diaSelected.valueOf(),
                 id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
             }
