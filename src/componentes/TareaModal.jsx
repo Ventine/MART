@@ -1,208 +1,76 @@
-import {
-    TfiClose,
-    TfiBook,
-    TfiHarddrives,
-    TfiPaintRoller,
-    TfiPaintBucket,
-    TfiLoop,
-    TfiEraser,
-    TfiCheck, TfiNa
-} from "react-icons/tfi";
-import {useContext, useState} from "react";
-import Global from "./Global.js";
+import React, { useState } from 'react';
+import { Modal } from '../components/ui/Modal';
+import { TaskForm } from '../components/tasks/TaskForm';
+import { Toast } from '../components/ui/Toast';
+import { Button } from '../components/ui/Button';
+import { useTaskStore } from '../store/useTaskStore';
+import { formatDisplay } from '../utils/date';
 
-const colores = ["green", "red", "purple", "lime", "pink"];
+function TareaModal({ isOpen, onClose, eventoSeleccionado, diaSelected }) {
+  const deleteTask = useTaskStore((s) => s.deleteTask);
+  const updateTask = useTaskStore((s) => s.updateTask);
+  const [toast, setToast] = useState(null);
 
-//Modal tarea en el calendario generado en la pagina horario
-function TareaModal() {
-    const {setShowNodal, diaSelected, despachoDeTareas, eventoSeleccionado} = useContext(Global)
-    let [titulo, setTitulo] = useState(eventoSeleccionado ? eventoSeleccionado.titulo : "")
-    const [descripcion, setDescripcion] = useState(eventoSeleccionado ? eventoSeleccionado.descripcion : "")
-    const [tiempo, setTiempo] = useState(eventoSeleccionado ? eventoSeleccionado.tiempo : "")
-    const [colorseleccionado, setcolorseleccionado] = useState(eventoSeleccionado ?
-        colores.find((col) => col === eventoSeleccionado.color)
-        : colores[0])
-    const [showAlertT, setShowAlertT] = useState(false);
-    const [showAlertF, setShowAlertF] = useState(false);
-    const [showAlertD, setShowAlertD] = useState(false);
-    const [showAlertE, setShowAlertE] = useState(false);
-
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        let tiimeTrue = parseInt(tiempo);
-        if (!(tiimeTrue === 0 || tiimeTrue == null || isNaN(tiimeTrue) || tiimeTrue < 0)) {
-
-            const calendarEvento = {
-                titulo,
-                descripcion,
-                tiempo,
-                color: colorseleccionado,
-                dia: diaSelected.valueOf(),
-                id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
-            }
-            if (eventoSeleccionado) {
-                despachoDeTareas({tipo: 'update', carga: calendarEvento})
-            } else {
-                despachoDeTareas({tipo: 'push', carga: calendarEvento})
-            }
-            setShowAlertT(true);
-            setTimeout(() => {
-                setShowAlertT(false);
-                setShowNodal(false)
-            }, 1000);
-        } else {
-            setShowAlertF(true);
-            setTimeout(() => {
-                setShowAlertF(false);
-            }, 1000);
-        }
+  const handleDelete = () => {
+    if (eventoSeleccionado) {
+      deleteTask(eventoSeleccionado.id);
+      setToast({ message: 'Tarea eliminada', type: 'success' });
+      setTimeout(onClose, 1000);
     }
+  };
 
-    function handleDelete(event) {
-        event.preventDefault()
-        setShowAlertD(true);
-        setTimeout(() => {
-            setShowAlertD(false);
-            setShowNodal(false);
-        }, 1000);
+  const handleComplete = () => {
+    if (eventoSeleccionado) {
+      updateTask(eventoSeleccionado.id, {
+        titulo: `\u221A ${eventoSeleccionado.titulo}`,
+        completed: true,
+        color: 'green',
+      });
+      setToast({ message: 'Tarea finalizada', type: 'success' });
+      setTimeout(onClose, 1000);
     }
+  };
 
-    function handleEnd(event) {
-        event.preventDefault()
-        let tiimeTrue = parseInt(tiempo);
-        if (!(tiimeTrue === 0 || tiimeTrue == null || isNaN(tiimeTrue) || tiimeTrue < 0)) {
-            const finalizado = " √" + titulo;
-            titulo = finalizado;
-            const calendarEvento = {
-                titulo,
-                descripcion,
-                tiempo,
-                color: "green",
-                dia: diaSelected.valueOf(),
-                id: eventoSeleccionado ? eventoSeleccionado.id : Date.now()
-            }
-            if (eventoSeleccionado) {
-                despachoDeTareas({tipo: 'update', carga: calendarEvento})
-            } else {
-                despachoDeTareas({tipo: 'push', carga: calendarEvento})
-            }
-            setShowAlertE(true);
-            setTimeout(() => {
-                setShowAlertE(false);
-                setShowNodal(false)
-            }, 1000);
-        } else {
-            setShowAlertF(true);
-            setTimeout(() => {
-                setShowAlertF(false);
-            }, 1000);
-        }
-    }
+  const handleSubmit = () => {
+    setToast({ message: eventoSeleccionado ? 'Tarea actualizada' : 'Tarea creada', type: 'success' });
+    setTimeout(onClose, 1000);
+  };
 
-    return (
-        <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center ">
-            <form className="bg-white rounded-lg shadow-xl w-5/6 sm:w-1/2 lg:w-1/4">
-                <header className="bg--50 p-3 flex justify-between items-center">
-                    <div>
-                        {eventoSeleccionado && (
-                            <button onClick={() => {
-                                despachoDeTareas({tipo: "delete", carga: eventoSeleccionado});
-                            }}>
-                                <TfiEraser className=" text-red-500 cursor-pointer" onClick={handleDelete}/>
-                            </button>
-                        )}
-                    </div>
-                    <TfiClose className=" text-gray-500 cursor-pointer" onClick={() => setShowNodal(false)}/>
-                </header>
-                <div className="p-2">
-                    <div className="grid grid-cols-1/5 items-end gap-1">
-                        <div></div>
-                        <input type="text" name="title" placeholder="Escribe tarea" value={titulo}
-                               onChange={(e) => setTitulo(e.target.value)} required={true} className="p-2 border-0 text-gray-600 text-xl
-                        font-semibold w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-600"/>
-                        <div className="flex items-center">
-                            <TfiBook className="text-gray-400 text-sm m-3"/>
-                            <p>{diaSelected.format("dddd, MMMM DD").toUpperCase()}</p>
-                        </div>
-                        <div className="flex items-center">
-                            <TfiHarddrives className="text-gray-400 text-sm m-3"/>
-                            <input type="text" name="descripcion" placeholder="Escribe descripcion" value={descripcion}
-                                   onChange={(e) => setDescripcion(e.target.value)} required={true} className="p-2 border-0 text-gray-600 text-xl
-                                 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-600"/>
-                        </div>
-                        <div className="flex items-center">
-                            <TfiLoop className="text-gray-400 text-sm m-3"/>
-                            <input type="number" name="descripcion" placeholder="Define el tiempo (min)" value={tiempo}
-                                   step={15} min={0} max={1000}
-                                   onChange={(e) => setTiempo(e.target.value)} required={true} className="p-2 border-0 text-gray-600 text-xl
-                                 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-600"/>
-                        </div>
-                        <div className="flex items-center">
-                            <TfiPaintRoller className="text-gray-400 text-sm m-3"/>
-                            <div className="flex gap-x-2">
-                                {colores.map((color, i) => (
-                                    <span key={i}
-                                          className={`w-6 h-6 rounded-full flex items-center justify-center cursor-pointer bg-${color}-500`}
-                                          onClick={() => {
-                                              setcolorseleccionado(color)
-                                          }}
-                                    >
-                                        {colorseleccionado === color && (
-                                            <TfiPaintBucket className="text-white text-sm m-1"/>
-                                        )}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <footer className="flex justify-end border-t p-2 mt-2">
-                    <button type="submit" className="bg-purple-500 hover:bg-purple-400 p-3 rounded-lg text-white"
-                            onClick={handleSubmit}>
-                        Guardar
-                    </button>
-                    <div>
-                        {eventoSeleccionado && (
-                            <button type="submit"
-                                    className="bg-green-500 hover:bg-green-400 p-3 rounded-lg text-white mx-3 p-4"
-                                    onClick={handleEnd}>
-                                Finalizar
-                            </button>
-                        )}
-                    </div>
-                </footer>
-            </form>
-            {showAlertT && (
-                <div className="top-0 right-0 absolute m-3 p-2 bg-green-500 text-white rounded-lg shadow w-70 text-sm font-bold flex
-                justify-center items-center">
-                    <TfiCheck className="text-3xl p-1 font-bold"/>
-                    La tarea fue creada o modificada exitosamente !!
-                </div>
-            )}
-            {showAlertF && (
-                <div className="top-0 right-0 absolute m-3 p-2 bg-red-500 text-white rounded-lg shadow w-70 text-sm font-bold flex
-                justify-center items-center">
-                    <TfiNa className="text-3xl p-1 font-bold"/>
-                    La tarea NO fue creada o modificada exitosamente !!
-                </div>
-            )}
-            {showAlertD && (
-                <div className="top-0 right-0 absolute m-3 p-2 bg-green-500 text-white rounded-lg
-                                    shadow w-70 text-sm font-bold flex justify-center items-center">
-                    <TfiCheck className="text-3xl p-1 font-bold"/>
-                    La tarea fue eliminada exitosamente !!
-                </div>
-            )}
-            {showAlertE && (
-                <div className="top-0 right-0 absolute m-3 p-2 bg-green-500 text-white rounded-lg
-                                    shadow w-70 text-sm font-bold flex justify-center itemss-center">
-                    <TfiCheck className="text-3xl p-1 font-bold"/>
-                    Felicitaciones por terminar la tarea !!
-                </div>
-            )}
+  return (
+    <>
+      <Modal isOpen={isOpen} onClose={onClose} title={formatDisplay(diaSelected)}>
+        <div className="mt-2">
+          <p className="text-sm text-gray-500 mb-4">
+            {formatDisplay(diaSelected)}
+          </p>
+          <TaskForm
+            initialData={eventoSeleccionado}
+            selectedDay={diaSelected}
+            onSubmit={handleSubmit}
+            onCancel={onClose}
+            mode={eventoSeleccionado ? 'edit' : 'create'}
+          />
+          {eventoSeleccionado && (
+            <div className="flex gap-2 mt-4 pt-4 border-t">
+              <Button variant="success" onClick={handleComplete}>
+                Finalizar
+              </Button>
+              <Button variant="danger" onClick={handleDelete}>
+                Eliminar
+              </Button>
+            </div>
+          )}
         </div>
-    )
+      </Modal>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
+    </>
+  );
 }
 
 export default TareaModal;

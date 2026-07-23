@@ -9,9 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@mui/material": "^5.11.10",
+    "@headlessui/react": "^2.2.10",
+    "@heroicons/react": "^2.2.0",
     "dayjs": "^1.11.7",
     "dayjs-random": "^1.0.1",
     "express": "^4.18.2",
@@ -20,14 +19,12 @@
     "match-sorter": "^6.3.1",
     "mysql": "^2.18.1",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.1",
-    "react-toastify": "^9.1.3",
     "sort-by": "^1.2.0",
-    "sweetalert": "^2.1.2"
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
